@@ -1,0 +1,14 @@
+# B2-E02 section 10 - full-field TRANSFER test of the controller that passed the modal gate (LBFGS).
+# Gate result: docs/hypotheses/B2-E02.md section 8.5 -> LBFGS label DOMINANCE (3/3 seeds), commit 19621a8.
+experiment: B2-E02T
+status: approved-by-preregistered-gate
+base_frozen: batch1_hard_tanh2      # full-field B1, unchanged
+max_steps: 5000                     # B1: 5000 x 128 = 640,000 PDE evaluations
+snapshot_every: 1000
+seeds: [1234, 1235, 1236]
+arms:
+  B1:    {kind: baseline, change: "none - frozen full-field B1 (re-run in the same batch for wall-clock parity)"}
+  LBFGS: {kind: fullfield_lab,
+          controller_kwargs: {switch_evals: 320000, total_evals: 640000, n_lbfgs: 640, history_size: 50, max_ls: 25, snapshot_evals: 128000},
+          change: "controller: B1 Adam loop unchanged up to 320,000 evaluations, then full-batch L-BFGS on a fixed 640-point (x,t) set, <= 320,000 evaluations"}
+primary_metric: persistence_cycles

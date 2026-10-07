@@ -60,3 +60,26 @@ def test_causal_epsilon_and_weights(tmp_path):
     total0, _ = tr.loss(batch)
     assert torch.all(tr.last_w == 1)
     assert tr.run(3) == "completed" and tr.acc["pde_evaluations"] == 48
+
+
+def test_fullfield_lbfgs_stage1_is_b1_and_budget_respected(tmp_path):
+    """Transfer arm: stage 1 = the frozen Batch-1 Trainer (bitwise); L-BFGS never exceeds the budget."""
+    from beampinn.training.trainer import Trainer
+    from physref.fullfield_lab import AdamLBFGSFullFieldTrainer
+    cfg = tiny()
+    cfg.train.max_steps, cfg.train.eval_every, cfg.train.log_every = 6, 1000, 1000
+    ref = Trainer(cfg, root=tmp_path / "b1")
+    ref.run(final_eval=False, stop_at_step=3)
+    tr = AdamLBFGSFullFieldTrainer(cfg, tmp_path / "l", switch_evals=12, total_evals=12 + 8 * 15, n_lbfgs=8,
+                                   max_ls=3, snapshot_evals=40)
+    st0 = tr.run(resume=False, final_eval=False, stop_at_step=3)
+    for k, v in ref.model.state_dict().items():
+        assert torch.equal(v, tr.model.state_dict()[k]), k
+    tr2 = AdamLBFGSFullFieldTrainer(cfg, tmp_path / "l2", switch_evals=12, total_evals=12 + 8 * 15, n_lbfgs=8,
+                                    max_ls=3, snapshot_evals=40)
+    assert tr2.run_two_stage() == "completed"
+    a = tr2.acc
+    assert a["switch_pde_evaluations"] == 12 and a["pde_evaluations"] <= 12 + 8 * 15
+    assert a["pde_evaluations"] == 12 + 8 * a["lbfgs_closure_evals"]
+    assert a["forward_passes"] == 3 + a["lbfgs_closure_evals"] == a["backward_passes"]
+    assert (tmp_path / "l2" / "logs").exists()

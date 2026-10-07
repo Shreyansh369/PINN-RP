@@ -73,6 +73,11 @@ def main():
             load_cast_state(tr.model, sd32)
         print("status:", tr.run())
         return
+    if spec["arms"][a.arm]["kind"] == "fullfield_lab":                # B2-E02 transfer (physref.fullfield_lab)
+        from physref.fullfield_lab import AdamLBFGSFullFieldTrainer
+        tr = AdamLBFGSFullFieldTrainer(cfg, run_dir, **spec["arms"][a.arm].get("controller_kwargs", {}))
+        print("status:", tr.run_two_stage())
+        return
     if spec["arms"][a.arm]["kind"] == "modal_lab":                    # B2-E02 controllers (physref.modal_lab)
         from physref.modal_lab import build_trainer
         arm_spec = spec["arms"][a.arm]

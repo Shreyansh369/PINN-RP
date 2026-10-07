@@ -103,6 +103,7 @@ def test_training_gate_only_approved_ids():
     from physref.gate import TrainingNotApproved, approved_ids, require_approval
     want = {f"B2-E01-{a}-s{s}" for a in ("B1", "B1_fp64", "mixed", "modal") for s in (1234, 1235, 1236)}
     want |= {f"B2-E02-{a}-s{s}" for a in ("M0", "LBFGS", "CAUSAL") for s in (1234, 1235, 1236)}
+    want |= {f"B2-E02T-{a}-s{s}" for a in ("B1", "LBFGS") for s in (1234, 1235, 1236)}
     assert approved_ids() == want
     with pytest.raises(TrainingNotApproved):
         require_approval("B2-E03-K4-s1234")

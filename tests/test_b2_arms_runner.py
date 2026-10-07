@@ -53,8 +53,8 @@ def test_arm_strict_mode_rejects_temp_dirs(tmp_path):
         ArmTrainer(tiny(), "modal", tmp_path, "T", strict=True)
 
 
-@pytest.mark.parametrize("arm", ["B1", "mixed", "modal"])
-def test_runner_dry_run_writes_nothing_and_execute_is_refused(arm):
+@pytest.mark.parametrize("arm", ["B1", "B1_fp64", "mixed", "modal"])
+def test_runner_dry_run_writes_nothing(arm):
     before = sorted(p for p in RESULTS_B2.rglob("*"))
     spec = PINNRP / "configs" / "batch2" / "B2-E01_mechanism_attribution.yaml"
     r = subprocess.run([sys.executable, str(PINNRP / "experiments" / "run_batch2.py"), "--spec", str(spec), "--arm", arm],
@@ -62,7 +62,46 @@ def test_runner_dry_run_writes_nothing_and_execute_is_refused(arm):
     assert r.returncode == 0 and "DRY RUN" in r.stdout
     if arm == "B1":
         assert "f78aa7f1da" in r.stdout                         # = Batch-1 Z4 (5k) run key
-    r = subprocess.run([sys.executable, str(PINNRP / "experiments" / "run_batch2.py"), "--spec", str(spec), "--arm", arm, "--execute"],
-                       capture_output=True, text=True)
-    assert r.returncode != 0 and "TrainingNotApproved" in r.stderr
     assert sorted(p for p in RESULTS_B2.rglob("*")) == before
+    if arm == "B1_fp64":
+        assert "float64" in r.stdout
+
+
+def test_modal_net_init_identical_to_b1_temporal_branch():
+    """Modal arm control: same temporal Fourier draws and identical trunk/head initialisation as B1."""
+    from beampinn.models.networks import SpatioTemporalFourierPINN
+    from physref.formulations.modal import TemporalFourierNet
+    cfg, _ = to_experiment_config("batch1_hard_tanh2")
+    m = cfg.model
+    torch.set_default_dtype(torch.float32)
+    b1 = SpatioTemporalFourierPINN(m, 2.75, 1.0, cfg.seed)
+    q = TemporalFourierNet(1.0, m.m_fourier, m.sigma_t, m.depth, m.width, cfg.seed, m.two_pi, burn_spatial_sigmas=m.sigma_x)
+    for a, b in zip(b1.enc_t, q.enc):
+        assert torch.equal(a.B, b.B)
+    for (ka, a), (kb, b) in zip(list(b1.trunk.state_dict().items()) + list(b1.head.state_dict().items()),
+                                list(q.trunk.state_dict().items()) + list(q.head.state_dict().items())):
+        assert torch.equal(a, b), ka
+
+
+def test_fp64_control_starts_from_identical_fp32_weights(tmp_path):
+    """Precision control: FP64 model = FP32 initial state cast to float64 (only precision differs)."""
+    from beampinn.training.trainer import Trainer
+    from physref.arms import fp32_initial_state, load_cast_state
+    c = tiny(); c.loss.hard_constraints = "ff_tanh2"
+    c32 = c; t32 = Trainer(c32, root=tmp_path / "a")
+    ref = {k: v.clone() for k, v in t32.model.state_dict().items()}
+    import copy
+    c64 = copy.deepcopy(c); c64.precision = "float64"
+    sd = fp32_initial_state(c64)
+    t64 = Trainer(c64, root=tmp_path / "b")
+    load_cast_state(t64.model, sd)
+    for k, v in t64.model.state_dict().items():
+        assert v.dtype == torch.float64 or not v.is_floating_point()
+        assert torch.equal(v, ref[k].to(v.dtype)), k
+    torch.set_default_dtype(torch.float32)
+
+
+def test_execute_refused_for_unapproved_ids():
+    from physref.gate import TrainingNotApproved, require_approval
+    with pytest.raises(TrainingNotApproved):
+        require_approval("B2-E01-mixed-s1235")            # stage-2 seeds are NOT approved

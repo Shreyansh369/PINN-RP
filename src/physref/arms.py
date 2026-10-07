@@ -18,7 +18,7 @@ from beampinn.evaluation.metrics import evaluate_full
 from beampinn.losses.residuals import reduce_loss
 from beampinn.models.networks import count_parameters, model_size_bytes
 from beampinn.optimization.optimizers import build_optimizer
-from beampinn.profiling.resources import peak_rss_mb, reset_peak_rss
+from beampinn.profiling.resources import peak_rss_mb, peak_vram_mb, reset_peak_rss
 from beampinn.sampling.samplers import PaperEpochSampler
 from beampinn.training.trainer import DTYPES, resolve_problem, setup_torch
 from beampinn.utils.io import save_checkpoint, write_history, write_json
@@ -49,7 +49,8 @@ class ArmTrainer:
             self.model = MixedHardFF(net2, ex, self.bm.L, self.bm.t_end, "tanh2", self.omega_1).to(dt)
             self.view = DisplacementView(self.model)
         else:
-            qnet = TemporalFourierNet(self.bm.t_end, m.m_fourier, m.sigma_t, m.depth, m.width, self.cfg.seed, m.two_pi)
+            qnet = TemporalFourierNet(self.bm.t_end, m.m_fourier, m.sigma_t, m.depth, m.width, self.cfg.seed, m.two_pi,
+                                      burn_spatial_sigmas=m.sigma_x)
             self.model = ModalHardQ(qnet, 1.0, self.bm.t_end, "tanh2", self.omega_1).to(dt)
             self.view = ModalField(self.model, ex).to(dt)
             self.omega2 = self.c2 * ex.beta ** 4          # Galerkin: w1^2 = c2 beta1^4 (tests)
@@ -61,7 +62,11 @@ class ArmTrainer:
         for p in self.paths.values():
             p.mkdir(parents=True, exist_ok=True)
         self.step, self.history, self.status = 0, [], "initialised"
-        self.acc = dict(optimizer_steps=0, pde_evaluations=0, train_seconds=0.0, peak_rss_mb=0.0)
+        # forward_passes / backward_passes: one batched forward of the residual graph and one
+        # backward (loss.backward) per optimizer step; residual_evaluations counts residual vectors
+        # (mixed: 2 per point - r_link and r_pde; modal: 1 ODE residual per t point).
+        self.acc = dict(optimizer_steps=0, pde_evaluations=0, residual_evaluations=0, forward_passes=0,
+                        backward_passes=0, train_seconds=0.0, peak_rss_mb=0.0)
 
     # ------------------------------------------------------------------ loss
     def loss(self, batch):
@@ -118,6 +123,9 @@ class ArmTrainer:
             self.acc["train_seconds"] += time.perf_counter() - t0
             self.acc["optimizer_steps"] += 1
             self.acc["pde_evaluations"] += self.cfg.sampler.mini_batch
+            self.acc["residual_evaluations"] += self.cfg.sampler.mini_batch * len(parts)
+            self.acc["forward_passes"] += 1
+            self.acc["backward_passes"] += 1
             self.step += 1
             if self.step % self.cfg.train.log_every == 0 or self.step == 1:
                 self.history.append({"step": self.step, "loss": float(total.detach()),
@@ -140,6 +148,32 @@ class ArmTrainer:
         self.save("final.pt")
         out = {"experiment_id": self.experiment_id, "arm": self.arm, "status": self.status,
                "parameters": count_parameters(self.model), "model_size_bytes": model_size_bytes(self.model),
-               "derivative_order_max": 2, **self.acc, **metrics, **pers}
+               "derivative_order_max": 2, "precision": self.cfg.precision, "peak_vram_mb": peak_vram_mb(),
+               **self.acc, **metrics, **pers}
         write_json(self.paths["logs"] / "metrics.json", out)
         return out
+
+
+def fp32_initial_state(cfg):
+    """Initial state_dict of the B-family model built EXACTLY as in FP32 (Fourier draws, weights,
+    biases, buffers). Used by the precision control so that FP64 differs from FP32 ONLY in arithmetic
+    precision, not in the random draws (torch.randn consumes generators differently per dtype)."""
+    from beampinn.models.networks import build_model
+    from beampinn.training.trainer import build_hard
+    c32 = copy.deepcopy(cfg)
+    c32.precision = "float32"
+    old = torch.get_default_dtype()
+    setup_torch(c32)
+    bm, refs, _, _, _ = resolve_problem(c32)
+    model = build_model(c32, bm).to(torch.float32)
+    if c32.loss.hard_constraints in ("ff_tsq", "ff_tanh2"):
+        model = build_hard(model, c32, bm, refs).to(torch.float32)
+    sd = {k: v.detach().clone() for k, v in model.state_dict().items()}
+    torch.set_default_dtype(old)
+    return sd
+
+
+def load_cast_state(model, sd32):
+    """Load a float32 state_dict into a (float64) model, casting floating tensors."""
+    tgt = model.state_dict()
+    model.load_state_dict({k: (v.to(tgt[k].dtype) if v.is_floating_point() else v) for k, v in sd32.items()})

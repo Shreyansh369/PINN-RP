@@ -99,11 +99,11 @@ def test_pareto_front():
     assert [p[2] for p in pareto_front(pts)] == ["a", "b"]
 
 
-def test_training_gate_refuses_everything_now():
+def test_training_gate_only_approved_ids():
     from physref.gate import TrainingNotApproved, approved_ids, require_approval
-    assert approved_ids() == set()
+    assert approved_ids() == {"B2-E01-B1-s1234", "B2-E01-B1_fp64-s1234", "B2-E01-mixed-s1234", "B2-E01-modal-s1234"}
     with pytest.raises(TrainingNotApproved):
-        require_approval("B2-E01-mixed-s1234")
+        require_approval("B2-E03-K4-s1234")
 
 
 def test_experiment_ids_never_reused(tmp_path, monkeypatch):

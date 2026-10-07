@@ -28,6 +28,11 @@ def plan(spec_path, arm, seed):
     cfg, doc = to_experiment_config(spec["base_frozen"])
     cfg.train.max_steps, cfg.train.budget_label = spec["max_steps"], "B2"
     cfg.seed = seed
+    arm_spec = spec["arms"][arm]
+    if arm_spec.get("precision"):
+        cfg.precision = arm_spec["precision"]          # precision control arm (e.g. B1_fp64)
+    if spec.get("snapshot_every"):
+        cfg.train.snapshot_every = spec["snapshot_every"]   # cadence only; not in the run key
     cfg.validate()
     exp_id = f"{spec['experiment']}-{arm}-s{seed}"
     steps = cfg.total_steps()
@@ -43,7 +48,7 @@ def main():
     a = ap.parse_args()
     spec, cfg, exp_id, steps = plan(a.spec, a.arm, a.seed)
     print(f"experiment {exp_id} | arm {a.arm}: {spec['arms'][a.arm]['change']}")
-    print(f"  base {spec['base_frozen']} (B1 run key {cfg.run_id()}), {steps:,} steps x mini-batch "
+    print(f"  base {spec['base_frozen']} (run key {cfg.run_id()}), {steps:,} steps x mini-batch "
           f"{cfg.sampler.mini_batch} = {steps * cfg.sampler.mini_batch:,} PDE evaluations, {cfg.precision}, "
           f"{cfg.threads} thread(s)")
     print(f"  approved for training: {exp_id in approved_ids()}")
@@ -54,14 +59,23 @@ def main():
     from physref.provenance import allocate_run_dir, record
     spec_sha = hashlib.sha256(open(a.spec, "rb").read()).hexdigest()
     run_dir = allocate_run_dir(exp_id, record(exp_id, a.spec, spec_sha, a.seed, spec["arms"][a.arm]["change"]))
-    if a.arm == "B1":
+    if spec["arms"][a.arm]["kind"] in ("baseline", "precision_control"):
         from beampinn.training.trainer import Trainer
+        sd32 = None
+        if cfg.precision != "float32":
+            from physref.arms import fp32_initial_state
+            sd32 = fp32_initial_state(cfg)             # identical initial weights/draws as FP32 B1
         tr = Trainer(cfg, root=run_dir)
-        tr.run()
+        if sd32 is not None:
+            from physref.arms import load_cast_state
+            load_cast_state(tr.model, sd32)
+        print("status:", tr.run())
         return
     from physref.arms import ArmTrainer
     tr = ArmTrainer(cfg, a.arm, run_dir.parent, exp_id, strict=True)
-    if tr.run(steps, snapshot_every=spec.get("snapshot_every")) == "completed":
+    st = tr.run(steps, snapshot_every=spec.get("snapshot_every"))
+    print("status:", st)
+    if st == "completed":
         tr.finalise()
 
 

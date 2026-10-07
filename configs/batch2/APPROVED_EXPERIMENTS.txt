@@ -1,2 +1,7 @@
 # Experiment IDs approved for TRAINING. One per line. Edit ONLY after explicit written PI approval.
-# Batch-2 preparation phase (2026-10-07): NO experiments approved.
+# 2026-10-07: PI approved B2-E01 (stage 1, seed 1234) with three research controls incl. an FP64
+# precision control. Mechanistic diagnostic / benchmark study - not a method claim.
+B2-E01-B1-s1234
+B2-E01-B1_fp64-s1234
+B2-E01-mixed-s1234
+B2-E01-modal-s1234

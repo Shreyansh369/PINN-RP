@@ -49,10 +49,16 @@ class TemporalFourierNet(nn.Module):
     """t -> N(t): the Batch-1 temporal branch (standardised t, Fourier sigma_t, tanh MLP),
     without the spatial branch. Declared representation for the modal arm."""
 
-    def __init__(self, T, m=100, sigma_t=(10.0, 1.0), depth=6, width=200, seed=1234, two_pi=False):
+    def __init__(self, T, m=100, sigma_t=(10.0, 1.0), depth=6, width=200, seed=1234, two_pi=False,
+                 burn_spatial_sigmas=()):
+        """burn_spatial_sigmas: draw (and discard) the spatial Fourier matrices first, exactly as the
+        B1 network does, so that the temporal B matrices AND the trunk/head initialisation are
+        IDENTICAL to B1's (same generators, same module order and shapes; tested)."""
         super().__init__()
         from beampinn.models.networks import FourierEncoding, InputTransform, _init, _mlp
         g = torch.Generator().manual_seed(seed)
+        for s in burn_spatial_sigmas:
+            FourierEncoding(m, s, two_pi, g)
         self.tt = InputTransform("standardize", 0.0, T)
         self.enc = nn.ModuleList(FourierEncoding(m, s, two_pi, g) for s in sigma_t)
         self.trunk = _mlp(2 * m, depth, width, nn.Tanh)

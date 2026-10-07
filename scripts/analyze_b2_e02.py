@@ -136,6 +136,10 @@ def evaluate_run(arm, seed):
              lbfgs_stop_reason=acc.get("lbfgs_stop_reason", ""), forward_passes=acc["forward_passes"],
              backward_passes=acc["backward_passes"], decay_error=abs(r["fit_decay"] - DECAY_EXACT),
              passes_persistence_gate=passes_persistence_gate(r))
+    # snapshots + final model, deduplicated by PDE-evaluation count (section 6.2)
+    if all(x["pde_evaluations"] != r["pde_evaluations"] for x in S):
+        S.append({**{k: r[k] for k in r}, "arm": arm, "seed": seed, "checkpoint": "final.pt"})
+    S.sort(key=lambda x: x["pde_evaluations"])
     # collapse-front metrics (section 6.2)
     tcs = [s["collapse_time_s"] for s in S]
     F["CF_AUC"] = float(np.mean(tcs) / 1.0)

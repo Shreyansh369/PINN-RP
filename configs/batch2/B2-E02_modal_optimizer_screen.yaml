@@ -1,0 +1,18 @@
+# B2-E02 - temporal-optimisation screen in the MODAL DIAGNOSTIC laboratory (not a method claim).
+# Pre-registration: docs/hypotheses/B2-E02.md. Control M0 = the frozen B2-E01 modal arm.
+experiment: B2-E02
+status: preregistered
+base_frozen: batch1_hard_tanh2      # supplies the B1 temporal representation, sampler, optimizer, precision
+max_steps: 5000                     # Adam steps for M0/CAUSAL: 5000 x 128 = 640,000 PDE evaluations
+snapshot_every: 1000                # every 128,000 PDE evaluations (metadata; never defines the budget)
+seeds: [1234, 1235, 1236]
+arms:
+  M0:     {kind: modal_lab, controller: adam,
+           change: "none - frozen B2-E01 modal control (Adam + lr 1e-3*0.9^(s/1000), mini-batch 128)"}
+  LBFGS:  {kind: modal_lab, controller: adam_lbfgs,
+           controller_kwargs: {switch_evals: 320000, total_evals: 640000, n_lbfgs: 640, history_size: 50, max_ls: 25, snapshot_evals: 128000},
+           change: "controller: Adam (identical to M0) for 320,000 evaluations, then full-batch L-BFGS (strong Wolfe, PyTorch default tolerances) on a fixed 640-point set for <= 320,000 evaluations"}
+  CAUSAL: {kind: modal_lab, controller: adam_causal,
+           controller_kwargs: {n_bins: 16, tol_frac: 0.01},
+           change: "loss: temporal causal weighting w_i = exp(-eps sum_{k<i} L_k), 16 bins, eps = 1/(16 L_tol), L_tol = 0.5 (0.01 w1^2 A0)^2"}
+primary_metric: persistence_cycles

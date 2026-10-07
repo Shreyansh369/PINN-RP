@@ -105,3 +105,13 @@ def test_execute_refused_for_unapproved_ids():
     from physref.gate import TrainingNotApproved, require_approval
     with pytest.raises(TrainingNotApproved):
         require_approval("B2-E01-mixed-s1237")            # only seeds 1234-1236 are approved
+
+
+@pytest.mark.parametrize("arm", ["M0", "LBFGS", "CAUSAL"])
+def test_b2_e02_spec_dry_run(arm):
+    spec = PINNRP / "configs" / "batch2" / "B2-E02_modal_optimizer_screen.yaml"
+    before = sorted(p for p in RESULTS_B2.rglob("*"))
+    r = subprocess.run([sys.executable, str(PINNRP / "experiments" / "run_batch2.py"), "--spec", str(spec), "--arm", arm],
+                       capture_output=True, text=True)
+    assert r.returncode == 0 and "DRY RUN" in r.stdout and "640,000 PDE evaluations" in r.stdout
+    assert sorted(p for p in RESULTS_B2.rglob("*")) == before

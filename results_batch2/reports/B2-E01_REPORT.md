@@ -283,3 +283,20 @@ SPINN, Mode 2, railway physics.
 | `scripts/analyze_b2_e01.py` | analysis (evaluation only) |
 
 **STOPPED. Waiting for review of B2-E01.**
+
+---
+
+## Amendment 2026-10-07 — seed replication (appended; nothing above was edited)
+
+Seeds 1235 and 1236 were run with the identical configuration. See `results_batch2/reports/B2-E01_SEED_REPLICATION.md`.
+
+**Unchanged in all seeds:**
+- FP64 is not material;
+- mixed is cheaper but never more accurate, with a physically inconsistent displacement;
+- modal improves every dynamics metric but still collapses.
+
+**Revised:**
+- The mixed "Case B" label is not seed-robust (B, A, B).
+- The modal gain is ×1.2–2.4 in persistence (Case C in no seed), with collapse at 0.30–0.37 s.
+- B1's own persistence varies by 2.0 cycles across seeds, ≈ 20× the Batch-1 spread used to justify the
+  1-cycle threshold, so the single-seed margins above are weaker than stated.

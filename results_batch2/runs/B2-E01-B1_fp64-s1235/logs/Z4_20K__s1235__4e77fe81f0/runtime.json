@@ -1,0 +1,8 @@
+{
+  "train_seconds": 1786.9830953149967,
+  "ntk_seconds": 0.0,
+  "validation_seconds": 74.558725412,
+  "diag_seconds": 5.851671614000509,
+  "final_eval_seconds": 205.57144168700006,
+  "segments": 1
+}

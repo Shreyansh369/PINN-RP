@@ -1,0 +1,153 @@
+{
+  "per_seed": {
+    "1234": {
+      "reproducibility_gate": {
+        "pass": true,
+        "dL2e_rel": 0.0,
+        "dP_cycles": 0.0,
+        "run_key_ok": true
+      },
+      "B1_fp64": {
+        "class": "COMPARABLE",
+        "dP_cycles": 0.0,
+        "L2e_ratio": 1.0000054095325435,
+        "dynamics_ok": true,
+        "W_ratio": 1.706986745111265,
+        "case": "not material"
+      },
+      "mixed": {
+        "class": "WORSE",
+        "dP_cycles": -1.487096642843275,
+        "L2e_ratio": 1.2823129855510438,
+        "dynamics_ok": 0.0,
+        "W_ratio": 0.45537843811369555,
+        "case": "B"
+      },
+      "modal": {
+        "class": "BETTER",
+        "dP_cycles": 4.466435591653851,
+        "L2e_ratio": 0.5137890746597463,
+        "dynamics_ok": true,
+        "W_ratio": 0.23105346528700657,
+        "case": "partial"
+      },
+      "case_E_all_similar": false
+    },
+    "1235": {
+      "reproducibility_gate": {
+        "pass": null,
+        "note": "not applicable: Batch 1 ran Z4 only with seed 1234"
+      },
+      "B1_fp64": {
+        "class": "COMPARABLE",
+        "dP_cycles": 0.0,
+        "L2e_ratio": 0.9999946647170085,
+        "dynamics_ok": true,
+        "W_ratio": 1.6213943126362185,
+        "case": "not material"
+      },
+      "mixed": {
+        "class": "COMPARABLE",
+        "dP_cycles": -0.9828216566888077,
+        "L2e_ratio": 1.1364107756568642,
+        "dynamics_ok": true,
+        "W_ratio": 0.46623988387935006,
+        "case": "A"
+      },
+      "modal": {
+        "class": "BETTER",
+        "dP_cycles": 3.5093422505851684,
+        "L2e_ratio": 0.5546701445088054,
+        "dynamics_ok": true,
+        "W_ratio": 0.241644666305443,
+        "case": "partial"
+      },
+      "case_E_all_similar": false
+    },
+    "1236": {
+      "reproducibility_gate": {
+        "pass": null,
+        "note": "not applicable: Batch 1 ran Z4 only with seed 1234"
+      },
+      "B1_fp64": {
+        "class": "COMPARABLE",
+        "dP_cycles": 0.0,
+        "L2e_ratio": 0.9999975979926641,
+        "dynamics_ok": true,
+        "W_ratio": 1.6537195816859813,
+        "case": "not material"
+      },
+      "mixed": {
+        "class": "WORSE",
+        "dP_cycles": -2.969047622562525,
+        "L2e_ratio": 1.562572678335652,
+        "dynamics_ok": true,
+        "W_ratio": 0.4568390562884963,
+        "case": "B"
+      },
+      "modal": {
+        "class": "COMPARABLE",
+        "dP_cycles": 0.9931129829368581,
+        "L2e_ratio": 0.8200094812574324,
+        "dynamics_ok": true,
+        "W_ratio": 0.2320795919547772,
+        "case": "H2-support"
+      },
+      "case_E_all_similar": false
+    }
+  },
+  "phase_b": {
+    "modal_case_per_seed": {
+      "1234": "partial",
+      "1235": "partial",
+      "1236": "H2-support"
+    },
+    "modal_P_ratio_per_seed": {
+      "1234": 2.415986949429038,
+      "1235": 2.1291390728476824,
+      "1236": 1.1947527749747728
+    },
+    "modal_L2_ratio_per_seed": {
+      "1234": 0.5137890746597463,
+      "1235": 0.5546701445088054,
+      "1236": 0.8200094812574324
+    },
+    "modal_collapse_time_per_seed": {
+      "1234": 0.37025,
+      "1235": 0.3215,
+      "1236": 0.296
+    },
+    "B1_collapse_time_per_seed": {
+      "1234": 0.15325,
+      "1235": 0.151,
+      "1236": 0.24775
+    },
+    "fp64_case_per_seed": {
+      "1234": "not material",
+      "1235": "not material",
+      "1236": "not material"
+    },
+    "fp64_max_rel_dL2": 5.409532543465545e-06,
+    "fp64_max_abs_dP": 0.0,
+    "mixed_case_per_seed": {
+      "1234": "B",
+      "1235": "A",
+      "1236": "B"
+    },
+    "mixed_class_per_seed": {
+      "1234": "WORSE",
+      "1235": "COMPARABLE",
+      "1236": "WORSE"
+    },
+    "mixed_W_ratio_per_seed": {
+      "1234": 0.45537843811369555,
+      "1235": 0.46623988387935006,
+      "1236": 0.4568390562884963
+    },
+    "case_E_per_seed": {
+      "1234": false,
+      "1235": false,
+      "1236": false
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "experiment_id": "B2-E01-mixed-s1236",
+  "created_utc": "2026-10-07T20:42:49+00:00",
+  "config_path": "configs/batch2/B2-E01_mechanism_attribution.yaml",
+  "config_sha256": "a515aaea21f48e5d3ccbd22fe07714f40dd3f8edf400cba74cc52f171428e9a6",
+  "git_sha": "ce9cd926c2e63514a8f247665f9b2aa29e47c8cf",
+  "git_dirty": false,
+  "seed": 1236,
+  "status": "allocated",
+  "notes": "formulation strong -> mixed (v = u_xx); 2-output head; highest derivative order 4 -> 2",
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.18.44-fc-v77-x86_64-with-glibc2.39",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "torch_threads": 4,
+    "cuda_available": false
+  },
+  "hardware": {
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "logical_cpus": 4,
+    "torch_threads": 4,
+    "ram_gb": 15.717475891113281,
+    "cuda": false,
+    "gpu": null,
+    "python": "3.13.16",
+    "torch": "2.14.0+cu130",
+    "platform": "Linux 6.18.44-fc-v77 x86_64"
+  },
+  "root_provenance": {
+    "root_repository": "https://github.com/Shreyansh369/PINN-replication",
+    "root_path": "/home/user/PINN-replication",
+    "root_branch_at_fork": "claude/tender-ramanujan-v3w90d",
+    "root_frozen_commit": "d31864a868c59858f99b9b0c5dab4b0f18758e25",
+    "root_frozen_tree": "73a939135a9799baea5a7fc4df151406c54f5fe7",
+    "root_status_at_fork": "clean (no modified, staged or untracked files)",
+    "z4_20k_commit": "d7e1461",
+    "fork_utc": "2026-10-07T00:21:26Z",
+    "note": "READ-ONLY. Never edit ROOT. Paths in this file are guarded by physref.safety."
+  }
+}

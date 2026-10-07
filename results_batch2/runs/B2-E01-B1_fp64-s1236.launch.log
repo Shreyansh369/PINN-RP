@@ -1,0 +1,4 @@
+experiment B2-E01-B1_fp64-s1236 | arm B1_fp64: precision float32 -> float64; identical initial weights/draws (FP32 init cast)
+  base batch1_hard_tanh2 (run key Z4_20K__s1236__fbf7b14af4), 5,000 steps x mini-batch 128 = 640,000 PDE evaluations, float64, 1 thread(s)
+  approved for training: True
+status: completed

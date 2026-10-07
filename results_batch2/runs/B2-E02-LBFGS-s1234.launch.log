@@ -1,0 +1,5 @@
+experiment B2-E02-LBFGS-s1234 | arm LBFGS: controller: Adam (identical to M0) for 320,000 evaluations, then full-batch L-BFGS (strong Wolfe, PyTorch default tolerances) on a fixed 640-point set for <= 320,000 evaluations
+  controller adam_lbfgs {'switch_evals': 320000, 'total_evals': 640000, 'n_lbfgs': 640, 'history_size': 50, 'max_ls': 25, 'snapshot_evals': 128000}
+  base batch1_hard_tanh2 (run key Z4_20K__s1234__f78aa7f1da), 5,000 steps x mini-batch 128 = 640,000 PDE evaluations, float32, 1 thread(s)
+  approved for training: True
+status: completed

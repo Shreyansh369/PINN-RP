@@ -1,0 +1,110 @@
+{
+  "thresholds": {
+    "dP_cycles": 3.0565238956709546,
+    "L2_ratio": 0.9,
+    "W_ratio_eff": 0.75,
+    "freq_err_max": 0.02
+  },
+  "LBFGS": {
+    "per_seed": {
+      "1234": {
+        "accuracy_improvement": true,
+        "worse": false,
+        "efficiency_improvement": true,
+        "W_ratio": 0.915131739209254,
+        "dP": 12.961925409419411,
+        "L2_ratio": 0.1410771745014906,
+        "reach_control_E": 384000,
+        "reach_control_W": 141.4345724189916,
+        "dominance": true
+      },
+      "1235": {
+        "accuracy_improvement": true,
+        "worse": false,
+        "efficiency_improvement": true,
+        "W_ratio": 0.928854208665527,
+        "dP": 13.96532971860432,
+        "L2_ratio": 0.2319044216435693,
+        "reach_control_E": 256000,
+        "reach_control_W": 94.56498813202688,
+        "dominance": true
+      },
+      "1236": {
+        "accuracy_improvement": true,
+        "worse": false,
+        "efficiency_improvement": true,
+        "W_ratio": 0.9070111920018931,
+        "dP": 14.490187357254888,
+        "L2_ratio": 0.2835919131032759,
+        "reach_control_E": 256000,
+        "reach_control_W": 91.39932497702102,
+        "dominance": true
+      }
+    },
+    "label": "DOMINANCE",
+    "n_accuracy": 3,
+    "n_efficiency": 3,
+    "n_dominance": 3,
+    "transfer_gate": true,
+    "mechanism": {
+      "reduction_freq_phase": 0.34338525140907605,
+      "reduction_decay_amplitude": 0.7918462911457451,
+      "P_std_ctrl": 0.7765179038226337,
+      "P_std_arm": 0.0,
+      "regressions_ctrl": 2,
+      "regressions_arm": 0,
+      "category": "B (amplitude decay)"
+    }
+  },
+  "CAUSAL": {
+    "per_seed": {
+      "1234": {
+        "accuracy_improvement": false,
+        "worse": true,
+        "efficiency_improvement": false,
+        "W_ratio": 1.0118782315216868,
+        "dP": -3.4784682718410176,
+        "L2_ratio": 3.2007178537849077,
+        "reach_control_E": null,
+        "reach_control_W": null,
+        "dominance": false
+      },
+      "1235": {
+        "accuracy_improvement": false,
+        "worse": true,
+        "efficiency_improvement": false,
+        "W_ratio": 1.0135807390823737,
+        "dP": -1.9810803027496915,
+        "L2_ratio": 1.8395537417569963,
+        "reach_control_E": null,
+        "reach_control_W": null,
+        "dominance": false
+      },
+      "1236": {
+        "accuracy_improvement": false,
+        "worse": true,
+        "efficiency_improvement": false,
+        "W_ratio": 1.004023586403308,
+        "dP": -3.987888921119509,
+        "L2_ratio": 4.719603955253008,
+        "reach_control_E": null,
+        "reach_control_W": null,
+        "dominance": false
+      }
+    },
+    "label": "NO IMPROVEMENT",
+    "n_accuracy": 0,
+    "n_efficiency": 0,
+    "n_dominance": 0,
+    "transfer_gate": false,
+    "mechanism": {
+      "reduction_freq_phase": -38.17598512479298,
+      "reduction_decay_amplitude": -88608.94678238496,
+      "P_std_ctrl": 0.7765179038226337,
+      "P_std_arm": 1.3419826290338284,
+      "regressions_ctrl": 2,
+      "regressions_arm": 1,
+      "category": "C (optimisation stability)"
+    }
+  }
+}

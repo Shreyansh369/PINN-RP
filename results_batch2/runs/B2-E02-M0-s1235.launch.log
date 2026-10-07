@@ -1,0 +1,5 @@
+experiment B2-E02-M0-s1235 | arm M0: none - frozen B2-E01 modal control (Adam + lr 1e-3*0.9^(s/1000), mini-batch 128)
+  controller adam {}
+  base batch1_hard_tanh2 (run key Z4_20K__s1235__9f2b0e63dc), 5,000 steps x mini-batch 128 = 640,000 PDE evaluations, float32, 1 thread(s)
+  approved for training: True
+status: completed

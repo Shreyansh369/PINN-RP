@@ -1,0 +1,5 @@
+experiment B2-E02-CAUSAL-s1234 | arm CAUSAL: loss: temporal causal weighting w_i = exp(-eps sum_{k<i} L_k), 16 bins, eps = 1/(16 L_tol), L_tol = 0.5 (0.01 w1^2 A0)^2
+  controller adam_causal {'n_bins': 16, 'tol_frac': 0.01}
+  base batch1_hard_tanh2 (run key Z4_20K__s1234__f78aa7f1da), 5,000 steps x mini-batch 128 = 640,000 PDE evaluations, float32, 1 thread(s)
+  approved for training: True
+status: completed

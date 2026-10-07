@@ -1,0 +1,42 @@
+{
+  "experiment_id": "B2-E02-LBFGS-s1235",
+  "created_utc": "2026-10-07T21:34:02+00:00",
+  "config_path": "configs/batch2/B2-E02_modal_optimizer_screen.yaml",
+  "config_sha256": "1fee8df558034c4ee4b33eb5c0f0abf08bf0bcb4bfeddb01adc0a7576aa6757a",
+  "git_sha": "8147008bb9a8a53610d32749828da1f9451d4465",
+  "git_dirty": false,
+  "seed": 1235,
+  "status": "allocated",
+  "notes": "controller: Adam (identical to M0) for 320,000 evaluations, then full-batch L-BFGS (strong Wolfe, PyTorch default tolerances) on a fixed 640-point set for <= 320,000 evaluations",
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.18.44-fc-v77-x86_64-with-glibc2.39",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "torch_threads": 4,
+    "cuda_available": false
+  },
+  "hardware": {
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "logical_cpus": 4,
+    "torch_threads": 4,
+    "ram_gb": 15.717475891113281,
+    "cuda": false,
+    "gpu": null,
+    "python": "3.13.16",
+    "torch": "2.14.0+cu130",
+    "platform": "Linux 6.18.44-fc-v77 x86_64"
+  },
+  "root_provenance": {
+    "root_repository": "https://github.com/Shreyansh369/PINN-replication",
+    "root_path": "/home/user/PINN-replication",
+    "root_branch_at_fork": "claude/tender-ramanujan-v3w90d",
+    "root_frozen_commit": "d31864a868c59858f99b9b0c5dab4b0f18758e25",
+    "root_frozen_tree": "73a939135a9799baea5a7fc4df151406c54f5fe7",
+    "root_status_at_fork": "clean (no modified, staged or untracked files)",
+    "z4_20k_commit": "d7e1461",
+    "fork_utc": "2026-10-07T00:21:26Z",
+    "note": "READ-ONLY. Never edit ROOT. Paths in this file are guarded by physref.safety."
+  }
+}

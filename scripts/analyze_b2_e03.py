@@ -116,8 +116,37 @@ def eval_point(path, final_coll, is_switch=False):
     return row, tr, blob
 
 
+def evaluate_diverged(arm, seed, d, ck):
+    """Amendment 1: no finite final model -> descriptive snapshots only; classification fields NaN."""
+    lat = torch.load(ck / "latest.pt", weights_only=False)
+    fcoll = lat.get("collocation")
+    S = []
+    for p in sorted(ck.glob("step_*.pt"), key=lambda p: int(p.stem.split("_")[1])) + [ck / "switch.pt"]:
+        b = torch.load(p, weights_only=False)
+        if not all(torch.isfinite(v).all() for v in b["model"].values() if v.is_floating_point()):
+            continue
+        r, _, _ = eval_point(p, fcoll, is_switch=(p.name == "switch.pt"))
+        r.update(arm=arm, seed=seed); S.append(r)
+    S.sort(key=lambda x: (x["pde_evaluations"], x["checkpoint"] != "switch.pt"))
+    acc = lat["acc"]
+    nan = float("nan")
+    F = {"arm": arm, "seed": seed, "experiment_id": eid(arm, seed), "status": "diverged",
+         "pde_evaluations": acc["pde_evaluations"], "stage2_closure_evals": acc.get("stage2_closure_evals", ""),
+         "stage2_stop_reason": acc.get("stage2_stop_reason", ""), "train_seconds": acc["train_seconds"],
+         "peak_rss_mb": acc.get("peak_rss_mb", nan), "optimizer_steps": acc["optimizer_steps"],
+         "init_checksum": json.load(open(d / "init_checksum.json"))["init_checksum"],
+         "divergence_events": json.dumps([(e["closure_index"], e["pde_evaluations"], e["set"]) for e in fcoll["events"]]),
+         **{k: nan for k in ("L2_exact", "L2_paper", "persistence_cycles", "persistence_cycles_vel", "collapse_time_s",
+                             "frequency_error_exact", "fit_decay", "R_dense", "R_train", "G", "dR")}}
+    return F, S, None, fcoll
+
+
 def evaluate(arm, seed):
     d, ck, lg = run_dirs(arm, seed)
+    if not (lg / "metrics.json").exists():
+        st = torch.load(ck / "latest.pt", weights_only=False)["status"]
+        assert st == "diverged", f"{arm} s{seed}: no metrics and status {st}"
+        return evaluate_diverged(arm, seed, d, ck)
     met = json.load(open(lg / "metrics.json"))
     fin_blob = torch.load(ck / "final.pt", weights_only=False)
     fcoll = fin_blob.get("collocation")
@@ -135,7 +164,7 @@ def evaluate(arm, seed):
         S.append({**f, "arm": arm, "seed": seed})
     S.sort(key=lambda x: (x["pde_evaluations"], x["checkpoint"] != "switch.pt"))
     acc = blob["acc"]
-    F = {"arm": arm, "seed": seed, "experiment_id": eid(arm, seed), **f,
+    F = {"arm": arm, "seed": seed, "experiment_id": eid(arm, seed), "status": "completed", **f,
          "IC_error_max": met["IC_error_max"], "BC_error_max": met["BC_error_max"], "parameters": met["parameters"],
          "model_size_bytes": met["model_size_bytes"], "peak_rss_mb": met["peak_rss_mb"],
          "optimizer_steps": acc["optimizer_steps"], "stage2_closure_evals": acc.get("stage2_closure_evals", 0),
@@ -152,32 +181,50 @@ def evaluate(arm, seed):
 
 
 # ----------------------------------------------------------------- decisions (sections 3, 8, 9)
+def _div(y):
+    return y.get("status") == "diverged"
+
+
 def MB(y, f):
+    if _div(y):
+        return False
     return y["L2_exact"] <= 0.80 * f["L2_exact"] and y["R_dense"] <= 0.80 * f["R_dense"] and \
         y["persistence_cycles"] >= f["persistence_cycles"] - 0.5
 
 
 def MW(y, f):
+    if _div(y):
+        return True
     return y["L2_exact"] >= 1.25 * f["L2_exact"] or y["R_dense"] >= 1.25 * f["R_dense"] or \
         y["persistence_cycles"] <= f["persistence_cycles"] - 1.0
 
 
 def RB1(y, b):
+    if _div(y):
+        return False
     return y["L2_exact"] <= 1.10 * b["L2_exact"] and y["R_dense"] <= 1.10 * b["R_dense"] and \
         y["persistence_cycles"] >= b["persistence_cycles"] - 1.0 and abs(y["frequency_error_exact"]) <= 0.02
 
 
 def IB1(y, b):
+    if _div(y):
+        return False
     return y["persistence_cycles"] >= b["persistence_cycles"] + DP_IB1 and y["L2_exact"] <= 0.9 * b["L2_exact"] and \
         y["R_dense"] <= 1.1 * b["R_dense"] and abs(y["frequency_error_exact"]) <= 0.02
 
 
 def OS(y):
+    if _div(y):
+        return False
     return (y["R_train"] < y["switch_R_train"] and y["R_dense"] > y["switch_R_dense"] and y["G"] > y["switch_G"]
             and y["persistence_cycles"] - y["switch_persistence_cycles"] <= 0.5)
 
 
 def dominates(x, y):
+    if _div(x):
+        return False
+    if _div(y):
+        return True
     le = (x["L2_exact"] <= y["L2_exact"] and x["persistence_cycles"] >= y["persistence_cycles"]
           and x["train_seconds"] <= y["train_seconds"] and x["peak_rss_mb"] <= y["peak_rss_mb"])
     lt = (x["L2_exact"] < y["L2_exact"] or x["persistence_cycles"] > y["persistence_cycles"]
@@ -192,14 +239,15 @@ def decide(F):
         row = {}
         for arm in ARMS:
             y = F[(arm, s)]
-            row[arm] = {"RB1": RB1(y, b), "IB1": IB1(y, b), "G": y["G"], "L2": y["L2_exact"], "R_dense": y["R_dense"],
+            row[arm] = {"status": y.get("status"), "RB1": RB1(y, b), "IB1": IB1(y, b), "G": y["G"], "L2": y["L2_exact"], "R_dense": y["R_dense"],
                         "P": y["persistence_cycles"]}
             if arm in STAGE2:
                 row[arm]["OS"] = OS(y)
             if arm in ("LBFGS-R", "LBFGS-4X", "ADAM-FULL"):
                 row[arm].update(MB=MB(y, f), MW=MW(y, f), G_ratio_vs_F=y["G"] / f["G"], L2_ratio_vs_F=y["L2_exact"] / f["L2_exact"],
                                 Rd_ratio_vs_F=y["R_dense"] / f["R_dense"], dP_vs_F=y["persistence_cycles"] - f["persistence_cycles"])
-        row["pareto_nondominated"] = [a for a in ARMS if not any(dominates(F[(o, s)], F[(a, s)]) for o in ARMS if o != a)]
+        row["pareto_nondominated"] = [a for a in ARMS if not _div(F[(a, s)])
+                                      and not any(dominates(F[(o, s)], F[(a, s)]) for o in ARMS if o != a)]
         per[s] = row
     n = lambda arm, key: sum(bool(per[s][arm][key]) for s in SEEDS)
     cov = {a: n(a, "MB") for a in ("LBFGS-R", "LBFGS-4X")}
@@ -215,7 +263,8 @@ def decide(F):
     else:
         case = "D"
     F_OS = n("LBFGS-F", "OS")
-    h1_arm = {a: (cov[a], sum(per[s][a]["G_ratio_vs_F"] <= 0.5 for s in SEEDS), sum(not per[s][a]["OS"] for s in SEEDS))
+    h1_arm = {a: (cov[a], sum(bool(per[s][a]["G_ratio_vs_F"] <= 0.5) for s in SEEDS),
+                  sum(not per[s][a]["OS"] and per[s][a]["status"] != "diverged" for s in SEEDS))
               for a in ("LBFGS-R", "LBFGS-4X")}
     if F_OS >= 2 and any(m == 3 and g == 3 and na >= 2 for m, g, na in h1_arm.values()):
         H1 = "supported"
@@ -235,7 +284,8 @@ def decide(F):
         H3 = "not supported (criteria not met)"
     H4 = "supported" if all(v < 2 for v in list(cov.values()) + [opt]) else "not supported"
     chunk_flag = rbF >= 2                         # section 4: B2-E02 fixed-set L-BFGS failed RB1 in 3/3 seeds
-    return {"per_seed": per, "counts": {"MB_LBFGS-R": cov["LBFGS-R"], "MB_LBFGS-4X": cov["LBFGS-4X"], "MB_ADAM-FULL": opt,
+    diverged = [f"{a} s{s}" for s in SEEDS for a in ARMS if _div(F[(a, s)])]
+    return {"diverged_runs": diverged, "per_seed": per, "counts": {"MB_LBFGS-R": cov["LBFGS-R"], "MB_LBFGS-4X": cov["LBFGS-4X"], "MB_ADAM-FULL": opt,
                                         "OS_LBFGS-F": F_OS, **{f"RB1_{a}": n(a, "RB1") for a in ARMS},
                                         **{f"IB1_{a}": n(a, "IB1") for a in ARMS},
                                         **{f"OS_{a}": n(a, "OS") for a in STAGE2}},
@@ -251,7 +301,8 @@ def integrity(F, COLL):
         for a in STAGE2:
             e = F[(a, s)]["pde_evaluations"]
             assert e <= BUDGET, f"STOP: {a} s{s} exceeds the budget ({e})"
-            assert abs(e - ADAM_FULL_E) <= COMPUTE_TOL * ADAM_FULL_E, f"STOP: unequal compute {a} s{s}: {e}"
+            if F[(a, s)].get("status") != "diverged":                          # Amendment 1
+                assert abs(e - ADAM_FULL_E) <= COMPUTE_TOL * ADAM_FULL_E, f"STOP: unequal compute {a} s{s}: {e}"
         assert F[("B1", s)]["pde_evaluations"] == BUDGET
         # set0 identical across stage-2 arms and equal to the B2-E02 transfer fixed set
         s0 = COLL[("LBFGS-F", s)]["sets"][0]
@@ -329,6 +380,9 @@ def figures(F, SN, TR, fig_dir):
     t, up, vp, ue, ve = TR[("B1", 1234)]
     axs[0].plot(t, ue, color=A.INK, lw=1, label="exact")
     for arm in ARMS:
+        if TR[(arm, 1234)] is None:                       # diverged: no final model (Amendment 1)
+            axs[0].plot([], [], color=COLOR[arm], lw=1.3, label=f"{LABEL[arm]} (diverged, no final model)")
+            continue
         tt, u, *_ = TR[(arm, 1234)]
         axs[0].plot(tt, u, color=COLOR[arm], lw=1.3, label=LABEL[arm])
         axs[1].plot(tt, u - ue, color=COLOR[arm], lw=1.1, label=LABEL[arm])

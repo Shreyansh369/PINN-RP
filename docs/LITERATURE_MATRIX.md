@@ -70,6 +70,9 @@ arxiv.org itself was not reachable from this environment (egress policy), so no 
 | D4 | Variable-scaling PINNs (VS-PINN); STVS-PINN | Ko & Park 2024, arXiv:2406.06287 (S: ID; authors M); STVS-PINN (Springer chapter, 2025/26) (S) | — | stretch coordinates to reduce gradient stiffness; STVS adds temporal segmentation | partial | M | L | PART | combines scaling and temporal segmentation: **closest to a conditioning + decomposition combination** |
 | D5 | Hard-constraint auxiliary functions for vibration (AT-PINN-HC) | Chen et al., 2025 | CMAME (2025) 117691; DOI 10.1016/j.cma.2024.117691 (S) | case-by-case auxiliary functions (trig for BC displacement, exponential for IC displacement/velocity) + time-marching | — | **H** | **H** | NEW | **closest prior art to the Batch-1 tanh²(ω₁t) time factor**; includes an EB beam |
 | D6 | Batch-1 time-factor conditioning (t/T)² → tanh²(ω₁t) | this project, Batch 1 | `references/batch1/reports/PHASE_X_DIAGNOSTIC.md` | required output N* ≈ −ω²/g''(0): −8.4e3 → −0.5 | yes | H | H | internal | prior evidence only; not claimed (prompt §15.1) |
+| D7 | Exact BC imposition with distance functions | Sukumar & Srivastava, 2022 | CMAME 389:114333 (vol. M); arXiv:2104.08426 (S) | trial function = (approximate distance function) × network, via R-functions and transfinite interpolation; the loss then contains only the residual | yes | M | M | EST | foundation of the B1 hard ansatz family |
+| D8 | hPINN (hard constraints via penalty / augmented Lagrangian) | Lu, Pestourie, Yao, Wang, Verdugo, Johnson, 2021 | SIAM J. Sci. Comput. 43(6):B1105 (vol. M), DOI 10.1137/21M1397908; arXiv:2102.04626 (S) | constraints enforced by penalty/AL in inverse design | yes | L | L | EST | — |
+| D9 | Scaling laws and pathologies of single-layer PINNs | 2026 | arXiv:2603.12556 (S) | empirical scaling laws; optimisation, not approximation, is the bottleneck | ? | M | L | NEW | supports the Batch-1 "optimisation not capacity" finding |
 
 ## E. PDE reformulation
 
@@ -199,10 +202,10 @@ arxiv.org itself was not reachable from this environment (egress policy), so no 
 
 ## Count
 
-**78 distinct works** are tabulated. Rows that repeat a work across categories (for example AT-PINN-HC in D5, G8 and
+**81 distinct works** are tabulated. Rows that repeat a work across categories (for example AT-PINN-HC in D5, G8 and
 H5) are counted once, and the internal Batch-1 rows D6 and I5 are not counted.
 
-- **62** were confirmed by search in this audit (S).
+- **65** were confirmed by search in this audit (S).
 - **16** are from bibliographic memory (M): Adam, DeepXDE/RAR, MIM, A-PINN (Yuan), VPINN, WAN, Deep Ritz,
   Tancik et al., adaptive activations, ModalPINN, bc-PINN, XPINN, FBPINN (Moseley), Raissi et al., DeepONet and FNO.
 - A DOI marked (M) inside an (S) row means the title/ID was confirmed but the DOI was not.

@@ -5,3 +5,13 @@ B2-E01-B1-s1234
 B2-E01-B1_fp64-s1234
 B2-E01-mixed-s1234
 B2-E01-modal-s1234
+# 2026-10-07: PI approved B2-E01 Phase-A seed replication (seeds 1235, 1236; identical configs,
+# budgets, snapshot cadence and evaluator as seed 1234).
+B2-E01-B1-s1235
+B2-E01-B1_fp64-s1235
+B2-E01-mixed-s1235
+B2-E01-modal-s1235
+B2-E01-B1-s1236
+B2-E01-B1_fp64-s1236
+B2-E01-mixed-s1236
+B2-E01-modal-s1236

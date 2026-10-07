@@ -104,4 +104,4 @@ def test_fp64_control_starts_from_identical_fp32_weights(tmp_path):
 def test_execute_refused_for_unapproved_ids():
     from physref.gate import TrainingNotApproved, require_approval
     with pytest.raises(TrainingNotApproved):
-        require_approval("B2-E01-mixed-s1235")            # stage-2 seeds are NOT approved
+        require_approval("B2-E01-mixed-s1237")            # only seeds 1234-1236 are approved

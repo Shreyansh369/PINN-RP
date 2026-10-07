@@ -1,7 +1,7 @@
 # B2-E02 - temporal-optimisation screen in the MODAL DIAGNOSTIC laboratory (not a method claim).
 # Pre-registration: docs/hypotheses/B2-E02.md. Control M0 = the frozen B2-E01 modal arm.
 experiment: B2-E02
-status: preregistered
+status: preregistered-and-approved (docs/hypotheses/B2-E02.md)
 base_frozen: batch1_hard_tanh2      # supplies the B1 temporal representation, sampler, optimizer, precision
 max_steps: 5000                     # Adam steps for M0/CAUSAL: 5000 x 128 = 640,000 PDE evaluations
 snapshot_every: 1000                # every 128,000 PDE evaluations (metadata; never defines the budget)

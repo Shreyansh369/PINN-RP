@@ -15,3 +15,14 @@ B2-E01-B1-s1236
 B2-E01-B1_fp64-s1236
 B2-E01-mixed-s1236
 B2-E01-modal-s1236
+# 2026-10-07: B2-E02 modal temporal-optimisation screen (PI: train only after the pre-registration
+# docs/hypotheses/B2-E02.md is committed, pushed and verified). Transfer IDs are NOT approved here.
+B2-E02-M0-s1234
+B2-E02-LBFGS-s1234
+B2-E02-CAUSAL-s1234
+B2-E02-M0-s1235
+B2-E02-LBFGS-s1235
+B2-E02-CAUSAL-s1235
+B2-E02-M0-s1236
+B2-E02-LBFGS-s1236
+B2-E02-CAUSAL-s1236

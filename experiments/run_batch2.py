@@ -48,6 +48,8 @@ def main():
     a = ap.parse_args()
     spec, cfg, exp_id, steps = plan(a.spec, a.arm, a.seed)
     print(f"experiment {exp_id} | arm {a.arm}: {spec['arms'][a.arm]['change']}")
+    if spec["arms"][a.arm].get("controller"):
+        print(f"  controller {spec['arms'][a.arm]['controller']} {spec['arms'][a.arm].get('controller_kwargs', {})}")
     print(f"  base {spec['base_frozen']} (run key {cfg.run_id()}), {steps:,} steps x mini-batch "
           f"{cfg.sampler.mini_batch} = {steps * cfg.sampler.mini_batch:,} PDE evaluations, {cfg.precision}, "
           f"{cfg.threads} thread(s)")
@@ -70,6 +72,17 @@ def main():
             from physref.arms import load_cast_state
             load_cast_state(tr.model, sd32)
         print("status:", tr.run())
+        return
+    if spec["arms"][a.arm]["kind"] == "modal_lab":                    # B2-E02 controllers (physref.modal_lab)
+        from physref.modal_lab import build_trainer
+        arm_spec = spec["arms"][a.arm]
+        tr = build_trainer(arm_spec["controller"], cfg, run_dir.parent, exp_id, strict=True,
+                           **arm_spec.get("controller_kwargs", {}))
+        st = tr.run(steps, snapshot_every=spec.get("snapshot_every")) if arm_spec["controller"] != "adam_lbfgs" \
+            else tr.run(snapshot_every=spec.get("snapshot_every"))
+        print("status:", st)
+        if st == "completed":
+            tr.finalise()
         return
     from physref.arms import ArmTrainer
     tr = ArmTrainer(cfg, a.arm, run_dir.parent, exp_id, strict=True)

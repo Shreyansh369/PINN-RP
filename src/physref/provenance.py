@@ -18,17 +18,18 @@ REGISTRY_FIELDS = ["experiment_id", "created_utc", "config_path", "config_sha256
 def git_state(repo=PINNRP):
     """(HEAD sha or 'no-commits', dirty flag). Uses --no-optional-locks so it never writes.
 
-    dirty = any modified/staged TRACKED file, or any untracked file OUTSIDE results_batch2/.
-    Untracked experiment outputs under results_batch2/ (run dirs, launch logs of concurrently
-    running experiments) do not mark the CODE as dirty. (B2-E01 recorded git_dirty=True only
-    because of such outputs; changed 2026-10-07 before the B2-E01 seed replication.)"""
+    dirty = any modified, staged or untracked file OUTSIDE results_batch2/.
+    Experiment outputs under results_batch2/ (run dirs, launch logs and the appended run registry
+    of concurrently running experiments) do not mark the CODE as dirty. (B2-E01 recorded git_dirty=True only
+    because of such outputs; changed 2026-10-07 during the B2-E01 seed replication:
+    seed-1235 records still flag the registry append; seed-1236 onward use this rule.)"""
     def run(*a):
         return subprocess.run(["git", "--no-optional-locks", "-C", str(repo), *a],
                               capture_output=True, text=True)
     head = run("rev-parse", "HEAD")
     sha = head.stdout.strip() if head.returncode == 0 else "no-commits"
     lines = [l for l in run("status", "--porcelain", "--untracked-files=all").stdout.splitlines() if l.strip()]
-    dirty = any(not (l.startswith("??") and l[3:].startswith("results_batch2/")) for l in lines)
+    dirty = any(not l[3:].startswith("results_batch2/") for l in lines)
     return sha, dirty
 
 

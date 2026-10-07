@@ -1,0 +1,4 @@
+experiment B2-E01-modal-s1234 | arm modal: field (x,t)->u  ->  u = A0 phi1(x) q_theta(t), q learned; spatial field removed (DIAGNOSTIC ONLY)
+  base batch1_hard_tanh2 (run key Z4_20K__s1234__f78aa7f1da), 5,000 steps x mini-batch 128 = 640,000 PDE evaluations, float32, 1 thread(s)
+  approved for training: True
+status: completed

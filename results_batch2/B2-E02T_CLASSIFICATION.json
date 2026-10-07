@@ -1,0 +1,32 @@
+{
+  "dP_threshold": 3.98,
+  "per_seed": {
+    "1234": {
+      "transfer_success": false,
+      "dP": -1.5591359265796276,
+      "L2_ratio": 1.2751568663586528,
+      "res_ratio": 1.547169297904117,
+      "W_ratio": 0.8707754629886557,
+      "freq_err": 0.0005382365649646024
+    },
+    "1235": {
+      "transfer_success": false,
+      "dP": -2.38758768954768,
+      "L2_ratio": 1.5361846396931458,
+      "res_ratio": 2.3766694219042015,
+      "W_ratio": 0.8907220674306696,
+      "freq_err": 0.0568447241700952
+    },
+    "1236": {
+      "transfer_success": false,
+      "dP": -2.572831562012587,
+      "L2_ratio": 1.4391640869657665,
+      "res_ratio": 1.2202519333695283,
+      "W_ratio": 0.8860294373178493,
+      "freq_err": 0.01995623313624126
+    }
+  },
+  "transfer_passed": false,
+  "final_decision": "E",
+  "modal_label_LBFGS": "DOMINANCE (B2-E02_CLASSIFICATION.json)"
+}

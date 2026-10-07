@@ -1,0 +1,4 @@
+experiment B2-E02T-LBFGS-s1235 | arm LBFGS: controller: B1 Adam loop unchanged up to 320,000 evaluations, then full-batch L-BFGS on a fixed 640-point (x,t) set, <= 320,000 evaluations
+  base batch1_hard_tanh2 (run key Z4_20K__s1235__9f2b0e63dc), 5,000 steps x mini-batch 128 = 640,000 PDE evaluations, float32, 1 thread(s)
+  approved for training: True
+status: completed

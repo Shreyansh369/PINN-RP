@@ -1,0 +1,22 @@
+# B2-E03 - mechanism isolation: collocation coverage vs quasi-Newton optimiser vs interaction, on the frozen
+# FULL-FIELD B1 problem. Pre-registration: docs/hypotheses/B2-E03.md. Not a method claim.
+experiment: B2-E03
+status: preregistered-and-approved (docs/hypotheses/B2-E03.md)
+base_frozen: batch1_hard_tanh2      # full-field B1, unchanged (architecture, physics, init, constraints, evaluator)
+max_steps: 5000                     # B1: 5000 x 128 = 640,000 PDE evaluations
+snapshot_every: 1000                # every 128,000 PDE evaluations (metadata)
+record_init_checksum: true
+seeds: [1234, 1235, 1236]
+_common: &stage2 {switch_evals: 320000, total_evals: 640000, n_active: 640, n_reservoir_sets: 4, switch_every: 50,
+                  history_size: 50, max_ls: 25, snapshot_evals: 128000, adam_full_steps: 474}
+arms:
+  B1:        {kind: baseline, change: "none - frozen full-field B1 control (Adam mini-batch 128, 5000 steps)"}
+  LBFGS-F:   {kind: collocation_lab, controller_kwargs: *stage2,
+              change: "Adam (=B1) to 320k, then L-BFGS on ONE fixed 640-point set (chunks <= 50 closures)"}
+  LBFGS-R:   {kind: collocation_lab, controller_kwargs: *stage2,
+              change: "as LBFGS-F, but a FRESH 640-point epoch draw every 50 closures (resampling)"}
+  LBFGS-4X:  {kind: collocation_lab, controller_kwargs: *stage2,
+              change: "as LBFGS-F, but a fixed 2,560-point reservoir (4 epoch draws); 640-point subsets cycled every 50 closures"}
+  ADAM-FULL: {kind: collocation_lab, controller_kwargs: *stage2,
+              change: "Adam (=B1) to 320k, then 474 FULL-BATCH Adam steps (same optimizer state/schedule) on the LBFGS-F fixed set"}
+primary_metric: persistence_cycles

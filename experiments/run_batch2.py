@@ -71,7 +71,21 @@ def main():
         if sd32 is not None:
             from physref.arms import load_cast_state
             load_cast_state(tr.model, sd32)
+        if spec.get("record_init_checksum"):                            # B2-E03 onward
+            import json as _json
+            from physref.collocation_lab import state_checksum
+            ck = state_checksum(tr.model)
+            (run_dir / "init_checksum.json").write_text(_json.dumps({"experiment_id": exp_id, "init_checksum": ck}) + "\n")
+            print("init checksum:", ck)
         print("status:", tr.run())
+        return
+    if spec["arms"][a.arm]["kind"] == "collocation_lab":              # B2-E03 (physref.collocation_lab)
+        import json as _json
+        from physref.collocation_lab import CollocationLabTrainer
+        tr = CollocationLabTrainer(cfg, run_dir, a.arm, **spec["arms"][a.arm].get("controller_kwargs", {}))
+        (run_dir / "init_checksum.json").write_text(_json.dumps({"experiment_id": exp_id, "init_checksum": tr.init_checksum}) + "\n")
+        print("init checksum:", tr.init_checksum)
+        print("status:", tr.run_two_stage())
         return
     if spec["arms"][a.arm]["kind"] == "fullfield_lab":                # B2-E02 transfer (physref.fullfield_lab)
         from physref.fullfield_lab import AdamLBFGSFullFieldTrainer

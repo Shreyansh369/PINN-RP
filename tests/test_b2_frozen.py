@@ -22,13 +22,14 @@ def test_frozen_yaml_reproduces_batch1_run_key(name, run_id):
     assert rec == doc["config"]                        # verbatim copy of the executed config
 
 
-def test_frozen_files_are_hash_locked_and_read_only():
+def test_frozen_files_are_hash_locked():
     hashes = json.load(open(frozen.HASHES))
     assert set(hashes) == {"baseline_fourier_ntk.yaml", "batch1_hard_tanh2.yaml"}
     for fn, h in hashes.items():
         p = frozen.FROZEN_DIR / fn
         assert hashlib.sha256(p.read_bytes()).hexdigest() == h
-        assert not (p.stat().st_mode & (stat.S_IWUSR | stat.S_IWGRP | stat.S_IWOTH)), f"{fn} is writable"
+    # (chmod a-w is applied locally by scripts/freeze_baselines.py, but git does not track
+    #  write permission, so the sha256 lock above is the enforced protection.)
 
 
 def test_tampering_is_detected(tmp_path, monkeypatch):

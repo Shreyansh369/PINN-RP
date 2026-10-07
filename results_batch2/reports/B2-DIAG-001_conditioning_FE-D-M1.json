@@ -1,0 +1,139 @@
+{
+  "problem": "FE-D-M1",
+  "bc_type": "fixed-fixed",
+  "terms": {
+    "a40": 1912.3128999999997,
+    "a02": 1.0,
+    "a01": 7.08
+  },
+  "scales": {
+    "omega1_rad_s": 129.3730608454508,
+    "omega_d_rad_s": 129.3246197462831,
+    "f_d_Hz": 20.582652496100692,
+    "period_s": 0.048584602989796694,
+    "cycles_in_window": 20.582652496100692,
+    "damping_ratio": 0.027362728970514876,
+    "decay_rate_1_s": 3.54,
+    "envelope_at_T": 0.029013327082197053,
+    "timescale_ratio_T_over_1_by_w": 129.3730608454508,
+    "stiffness_ratio_w_over_decay": 36.54606238572056,
+    "wavelength_ratio_L_beta1": 4.730040744862704,
+    "max_x_order": 4,
+    "max_t_order": 2
+  },
+  "term_magnitudes": {
+    "magnitudes": {
+      "a40": 1338.9911098016569,
+      "a02": 1338.991109801657,
+      "a01": 73.27690166286332
+    },
+    "ratios_to_max": {
+      "a40": 0.9999999999999998,
+      "a02": 1.0,
+      "a01": 0.054725457941029745
+    },
+    "residual_scale_w2A0": 1338.991109801657
+  },
+  "nondimensionalization": {
+    "physical (Lx=1 m, Tc=1 s)": {
+      "coeffs": {
+        "a40": 1912.3128999999997,
+        "a02": 1.0,
+        "a01": 7.08
+      },
+      "xi_range": 2.75,
+      "tau_range": 1.0,
+      "coeff_spread": 1912.3128999999997
+    },
+    "domain (Lx=L, Tc=T)": {
+      "coeffs": {
+        "a40": 33.437067304145884,
+        "a02": 1.0,
+        "a01": 7.08
+      },
+      "xi_range": 1.0,
+      "tau_range": 1.0,
+      "coeff_spread": 33.437067304145884
+    },
+    "modal (Lx=1/beta1, Tc=1/w1)": {
+      "coeffs": {
+        "a40": 1.0000000000000002,
+        "a02": 1.0,
+        "a01": 0.054725457941029745
+      },
+      "xi_range": 4.730040744862705,
+      "tau_range": 129.3730608454508,
+      "coeff_spread": 18.273031192860287
+    }
+  },
+  "hard_ansatz": {
+    "t2": {
+      "g2_at_0": 2.0,
+      "N_star_scale": -8368.694436260357
+    },
+    "tanh2": {
+      "g2_at_0": 33474.77774504143,
+      "N_star_scale": -0.5
+    }
+  },
+  "spectral_content_midspan": {
+    "dominant_Hz": 20.561471926403676,
+    "band_99pct_Hz": 22.12389380530973
+  },
+  "fourier_coverage_t": {
+    "B0 paper (2pi, physical)": [
+      {
+        "sigma": 10.0,
+        "threshold_on_B": 20.582652496100692,
+        "expected_fraction": 0.03956467807389428,
+        "expected_count": 3.9564678073894277
+      },
+      {
+        "sigma": 1.0,
+        "threshold_on_B": 20.582652496100692,
+        "expected_fraction": 3.9259964761738386e-94,
+        "expected_count": 3.925996476173839e-92
+      }
+    ],
+    "B1 D4 (no 2pi, standardised)": [
+      {
+        "sigma": 10.0,
+        "threshold_on_B": 37.332802011681274,
+        "expected_fraction": 0.00018900213286962946,
+        "expected_count": 0.018900213286962946
+      },
+      {
+        "sigma": 1.0,
+        "threshold_on_B": 37.332802011681274,
+        "expected_fraction": 4.821188265058008e-305,
+        "expected_count": 4.821188265058008e-303
+      }
+    ]
+  },
+  "galerkin_modes": [
+    {
+      "n": 1,
+      "beta": 1.7200148163137106,
+      "omega2_galerkin": 16737.38887252071,
+      "omega2_closed": 16737.38887252071,
+      "q0": 1.0000000000000002
+    },
+    {
+      "n": 2,
+      "beta": 2.8557107723984867,
+      "omega2_galerkin": 127179.12535442176,
+      "omega2_closed": 127179.12535442178,
+      "q0": 5.603637717235198e-15
+    },
+    {
+      "n": 3,
+      "beta": 3.998402850182426,
+      "omega2_galerkin": 488770.6825214485,
+      "omega2_closed": 488770.68252144865,
+      "q0": -1.1563283520709435e-13
+    }
+  ],
+  "experiment_id": "B2-DIAG-001",
+  "git_sha": "f9323e14294eab66e57112aaa8e4166f0e1eb2b5",
+  "git_dirty": false
+}

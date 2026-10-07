@@ -1,0 +1,11 @@
+{
+  "root_repository": "https://github.com/Shreyansh369/PINN-replication",
+  "root_path": "/home/user/PINN-replication",
+  "root_branch_at_fork": "claude/tender-ramanujan-v3w90d",
+  "root_frozen_commit": "d31864a868c59858f99b9b0c5dab4b0f18758e25",
+  "root_frozen_tree": "73a939135a9799baea5a7fc4df151406c54f5fe7",
+  "root_status_at_fork": "clean (no modified, staged or untracked files)",
+  "z4_20k_commit": "d7e1461",
+  "fork_utc": "2026-10-07T00:21:26Z",
+  "note": "READ-ONLY. Never edit ROOT. Paths in this file are guarded by physref.safety."
+}

@@ -1,0 +1,15 @@
+# B2-E01 - Failure-mechanism attribution by mathematically equivalent reformulation at matched
+# compute. PRE-REGISTERED (docs/BATCH2_EXPERIMENT_MATRIX.md, section E01). NOT APPROVED FOR TRAINING.
+experiment: B2-E01
+status: proposed
+base_frozen: batch1_hard_tanh2      # B1; only train.max_steps is overridden (5k, = Batch-1 Z4)
+max_steps: 5000                     # x mini-batch 128 = 6.4e5 PDE evaluations (= Z4-5k, = Y1-20K)
+snapshot_every: 1000
+seeds_stage1: [1234]
+seeds_stage2: [1235, 1236]          # only if the stage-1 decision rule triggers (matrix E01)
+arms:
+  B1:    {kind: baseline, change: none (re-run of Batch-1 Z4 @5k; must reproduce run key f78aa7f1da)}
+  mixed: {kind: arm, change: "formulation strong -> mixed (v = u_xx)"}
+  modal: {kind: arm, change: "field (x,t)->u  ->  t->q(t) with exact mode-1 shape (Galerkin)"}
+primary_metric: persistence_cycles          # frozen Batch-1 definition (physref.persistence)
+secondary_metrics: [L2_exact, L2_paper, PDE_residual_rel, frequency_error_exact, fit_lam, train_seconds, peak_rss_mb]

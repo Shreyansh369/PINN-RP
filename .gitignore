@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+# resume-only state (final.pt and step_*.pt snapshots are decided per experiment)
+results_batch2/**/latest.pt
+results_batch2/**/*.tmp

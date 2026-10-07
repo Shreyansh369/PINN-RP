@@ -1,0 +1,101 @@
+# FROZEN REFERENCE BASELINE B0 - DO NOT EDIT.
+# Integrity: sha256 in FROZEN_HASHES.json; verified by physref.frozen and tests.
+# The `config` block is the exact executed Batch-1 config of run C0_paper__s1234__c41ccb1cdf;
+# loading it reproduces that run key.
+frozen: true
+baseline_id: B0
+title: 'Published-method baseline: paper-faithful Fourier features + NTK weighting (C0)'
+role: Published-method reference (Soyleyici & Unver 2025, EAAI 141:109804). NOT our method.
+source_root_commit: d31864a868c59858f99b9b0c5dab4b0f18758e25
+source_run_id: C0_paper__s1234__c41ccb1cdf
+source_run_config: results_optimization/configs/C0_paper__s1234__c41ccb1cdf.json (ROOT)
+batch1_result:
+  source: references/batch1/run_metrics/C0_paper__s1234__c41ccb1cdf.metrics.json
+  L2_paper: 3.2588899126058393
+  L2_exact: 3.258904583751413
+  steps: 20000
+  pde_evaluations: 640000
+  train_seconds: 1575.17
+  behaviour: static field (0 cycles); NTK weights grew to ~1e14-1e15 (Phase A/D reports)
+config:
+  name: C0_paper
+  seed: 1234
+  mode: 1
+  precision: float32
+  device: cpu
+  threads: 1
+  benchmark:
+    benchmark_id: FE-D-M1
+    pde_coeffs: paper_eq49
+    ic_shape: exact
+    amplitude: null
+  model:
+    arch: st_fourier
+    depth: 6
+    width: 200
+    activation: tanh
+    m_fourier: 100
+    sigma_x:
+    - 1.0
+    sigma_t:
+    - 10.0
+    - 1.0
+    two_pi: true
+    input_norm: physical
+    output_scale: 1.0
+    weight_init: xavier_normal
+    bias_init: normal
+  sampler:
+    kind: paper_epoch
+    n_per_term: 640
+    mini_batch: 32
+    resample: epoch
+    ic_fraction_in_u: 0.5
+    adaptive: none
+    rad:
+      k: 1.0
+      c: 1.0
+      every: 1000
+      n_candidates: 10000
+    rar:
+      every: 1000
+      n_candidates: 10000
+      n_add: 32
+      k: 2.0
+      c: 0.0
+  loss:
+    grouping: paper
+    reduction: half_mean
+    pde_scale: 1.0
+    weighting: ntk
+    fixed_weights: {}
+    ntk:
+      every: 100
+      ema: 1.0
+      trace_norm: mean
+      max_rows: 32
+    hard_constraints: none
+    mixed_formulation: false
+    causal: false
+  optim:
+    name: adam
+    lr: 0.0001
+    betas:
+    - 0.9
+    - 0.999
+    eps: 1.0e-08
+    weight_decay: 0.0
+    schedule: constant
+    decay_rate: 0.9
+    decay_steps: 1000
+    grad_clip: null
+    lbfgs_steps: 0
+  train:
+    epochs: 45000
+    max_steps: 20000
+    budget_label: S1
+    log_every: 250
+    eval_every: 1000
+    ckpt_every: 5000
+    log_grad_norms: true
+  notes: 'Phase A C0: paper-faithful Fourier + NTK (Table 4 #12, Eq.37/38-43/48/49); becomes CURRENT_BEST'

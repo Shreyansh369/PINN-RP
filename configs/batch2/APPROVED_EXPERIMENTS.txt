@@ -1,0 +1,2 @@
+# Experiment IDs approved for TRAINING. One per line. Edit ONLY after explicit written PI approval.
+# Batch-2 preparation phase (2026-10-07): NO experiments approved.

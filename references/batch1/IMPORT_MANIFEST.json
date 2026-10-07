@@ -1,0 +1,1068 @@
+{
+ "root_repository": "https://github.com/Shreyansh369/PINN-replication",
+ "root_frozen_commit": "d31864a868c59858f99b9b0c5dab4b0f18758e25",
+ "method": "git archive of the frozen commit into a scratch staging dir outside both repos; selected files copied into PINN-RP; this manifest is built from `git show` blobs",
+ "n_files": 149,
+ "modified_files": [
+  "experiments/update_leaderboard.py",
+  "pyproject.toml",
+  "requirements.txt",
+  "src/beampinn/utils/io.py",
+  "tests/test_hard_rad_mode2.py"
+ ],
+ "files": [
+  {
+   "root_path": "src/beampinn/__init__.py",
+   "pinnrp_path": "src/beampinn/__init__.py",
+   "git_blob": "7f7e43e782621fe6761cfa37cf4c34ab1a201ded",
+   "root_sha256": "2eefe1b3bc694243e029c28ae71af52682f6c980a8a5ae89e03cebc8655bcf3b",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/config.py",
+   "pinnrp_path": "src/beampinn/config.py",
+   "git_blob": "4b95b4b65cb20e8c84031a93e2ca868e408bc7cc",
+   "root_sha256": "1acd72ebd1dcbaf410770448d6dc78b256f8df8cdc577c8d38560d4943cf154a",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/evaluation/__init__.py",
+   "pinnrp_path": "src/beampinn/evaluation/__init__.py",
+   "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/evaluation/frequency.py",
+   "pinnrp_path": "src/beampinn/evaluation/frequency.py",
+   "git_blob": "33579912e6c2cdcba236e7a0a7dc2a847663e6bf",
+   "root_sha256": "ab15032818bb8c0fbac7989c9de7d43f54d74c81eeebf944f264d3424e8ad9b7",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/evaluation/metrics.py",
+   "pinnrp_path": "src/beampinn/evaluation/metrics.py",
+   "git_blob": "7f19bf401a5664107d8f1826c60b104f597b2dca",
+   "root_sha256": "ae1e81473ff218de706381f8209e84c1eb1059440f4f2511d864e1e433ee095a",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/losses/__init__.py",
+   "pinnrp_path": "src/beampinn/losses/__init__.py",
+   "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/losses/residuals.py",
+   "pinnrp_path": "src/beampinn/losses/residuals.py",
+   "git_blob": "13dbea84305fc970aedd14bdee22f518d7031819",
+   "root_sha256": "7959cb95701ccfa583aae621fc174ff7c17cf843e387b457ae533bbaf9893632",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/losses/weighting.py",
+   "pinnrp_path": "src/beampinn/losses/weighting.py",
+   "git_blob": "2076036e6d9b561a313a510ce1887ca9caee1aba",
+   "root_sha256": "6fffc3ec1a7a2371d0b06d36627771d969a67492f8d052b8a8f54a347ff8354c",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/models/__init__.py",
+   "pinnrp_path": "src/beampinn/models/__init__.py",
+   "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/models/constraints.py",
+   "pinnrp_path": "src/beampinn/models/constraints.py",
+   "git_blob": "58fcc1e0b78ac59997aacd0ab2a985aa139a6e8d",
+   "root_sha256": "c830ea1f6dda59094639c4b09cc958f05f755fcb9a1abfd90569e3859a49449c",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/models/networks.py",
+   "pinnrp_path": "src/beampinn/models/networks.py",
+   "git_blob": "869da6273e2dd9285c191c9e5f4eb1d601554c85",
+   "root_sha256": "18949dc9bac1306d0bedbf14a987fc2b6bb671b9bfe316761e49471bbf1aef02",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/optimization/__init__.py",
+   "pinnrp_path": "src/beampinn/optimization/__init__.py",
+   "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/optimization/optimizers.py",
+   "pinnrp_path": "src/beampinn/optimization/optimizers.py",
+   "git_blob": "fe3b2a6adac30a7ec58df12ca4b5f2f9c19b39bb",
+   "root_sha256": "1d5741d22fc87afbc8956d06d3b7bf63f4af0bc7cc9199b619bb78f9bba1a8d6",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/physics/__init__.py",
+   "pinnrp_path": "src/beampinn/physics/__init__.py",
+   "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/physics/beam.py",
+   "pinnrp_path": "src/beampinn/physics/beam.py",
+   "git_blob": "1d04b2480e99f06b044eb7790330b056055df61e",
+   "root_sha256": "d0e3fa7b6c55c6852eb8d5bfc00dd29435195515fedbb0dd6086eae9193e22fb",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/physics/benchmarks.py",
+   "pinnrp_path": "src/beampinn/physics/benchmarks.py",
+   "git_blob": "1e177544e43a28238a86ae961cc3e3cd6598349c",
+   "root_sha256": "d73d63ed47e285fdcbb3843496624ca8b96c93b96da58a5b7f2451cbcbe9f321",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/profiling/__init__.py",
+   "pinnrp_path": "src/beampinn/profiling/__init__.py",
+   "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/profiling/resources.py",
+   "pinnrp_path": "src/beampinn/profiling/resources.py",
+   "git_blob": "daa644463bad19f019869850f419db5340d0fe49",
+   "root_sha256": "b76d2bce904019c59b4b5b6d054ae927a3214cca2606f0c37d62a0af23f53c46",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/sampling/__init__.py",
+   "pinnrp_path": "src/beampinn/sampling/__init__.py",
+   "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/sampling/rad.py",
+   "pinnrp_path": "src/beampinn/sampling/rad.py",
+   "git_blob": "7482caf461dda527d46be3a2973dec048f71673a",
+   "root_sha256": "f4dfc18ea3a6cbfebb5441c1afbd93be6ff1be1075b9c2801fdbbf015eff79e5",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/sampling/samplers.py",
+   "pinnrp_path": "src/beampinn/sampling/samplers.py",
+   "git_blob": "678af7eb7a6ef09bb564c1ee81b10b2ca790d995",
+   "root_sha256": "88cdcff9a87ee7a8b25346ea42f86531ec16d7b1624ae80e78804e3ca953497a",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/training/__init__.py",
+   "pinnrp_path": "src/beampinn/training/__init__.py",
+   "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/training/trainer.py",
+   "pinnrp_path": "src/beampinn/training/trainer.py",
+   "git_blob": "22f7a4865976ea6eedf928aa2c511782a409b061",
+   "root_sha256": "ace328411e8df2d39d76893f3979c3aef3a0ab31a756a502f3840504c71b7ad0",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/utils/__init__.py",
+   "pinnrp_path": "src/beampinn/utils/__init__.py",
+   "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "identical"
+  },
+  {
+   "root_path": "src/beampinn/utils/io.py",
+   "pinnrp_path": "src/beampinn/utils/io.py",
+   "git_blob": "f269de986efd78751f4a15487cc72b6dc9215d84",
+   "root_sha256": "ecb40b333ba5ce17088c4dadedebaad64ac705ff0bceba4b08ca365cc86ceb7d",
+   "status": "modified",
+   "pinnrp_sha256": "431a37c49e4bc29d60769bdede0217976116517b607884629691feb11e6f50b9",
+   "reason": "default output root results_optimization/ -> results_batch2/runs/; run_paths calls the Batch-2 ROOT-write guard"
+  },
+  {
+   "root_path": "tests/conftest.py",
+   "pinnrp_path": "tests/conftest.py",
+   "git_blob": "41bf208abfc7519e30f1179fc49c3496d8efcf17",
+   "root_sha256": "bc50f2e3e01e76f9e4e87497e25bcf1ad4950ccbd3f51755c075637b4b832327",
+   "status": "identical"
+  },
+  {
+   "root_path": "tests/test_hard_rad_mode2.py",
+   "pinnrp_path": "tests/test_hard_rad_mode2.py",
+   "git_blob": "5cf949ff2aedd58172b4a7a72bcf0178b3987db4",
+   "root_sha256": "efd5d89a30f8a90d04137f78b1f5f983553f25e67e4ce61de79526df6b68f953",
+   "status": "modified",
+   "pinnrp_sha256": "e8bad05c2d99a635d80e6947be9da8c77ccb78ba068b3ab3bd38fc75ca948feb",
+   "reason": "Batch-1 run configs read from references/batch1/run_configs/ instead of results_optimization/configs/"
+  },
+  {
+   "root_path": "tests/test_losses_sampling.py",
+   "pinnrp_path": "tests/test_losses_sampling.py",
+   "git_blob": "c2a0251cfa093526f8982f58af69b9521c22fc90",
+   "root_sha256": "1fdf3ff9b6fc0bbe4b03077914c9528ccfb35c3988d7aeb4d2aa77dcbb843316",
+   "status": "identical"
+  },
+  {
+   "root_path": "tests/test_metrics_config_trainer.py",
+   "pinnrp_path": "tests/test_metrics_config_trainer.py",
+   "git_blob": "cb8c6708f73f279bf4bbecbd4679aedbff4f6a9d",
+   "root_sha256": "5a5d26b9a6b42a87b28b2f4e99c7d0a0f94392f5580075197442b42a6ac176d2",
+   "status": "identical"
+  },
+  {
+   "root_path": "tests/test_models.py",
+   "pinnrp_path": "tests/test_models.py",
+   "git_blob": "05f5648e9663ff7313b5372947674f1d03a42cbc",
+   "root_sha256": "ac49dfb0be814c5fc5a5aab1b0eec9abe4de3507b665461d0799faa92f9ac0d6",
+   "status": "identical"
+  },
+  {
+   "root_path": "tests/test_physics.py",
+   "pinnrp_path": "tests/test_physics.py",
+   "git_blob": "4c36382c1076480b985bfeabc07965ef6d71887f",
+   "root_sha256": "56a7aa28a1715f867a2293133416ee6f50f7a95f1bf914be9041e59427948171",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseA/BA_vanilla.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseA/BA_vanilla.json",
+   "git_blob": "2131158fb74536ea21b2a9183e690d3a25913723",
+   "root_sha256": "4c3dd48dc71f7b9c36faf6ad5d9d523a3712126bb39d26b41fbb9e90b032b750",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseA/BB_fourier.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseA/BB_fourier.json",
+   "git_blob": "67319daa38b49f6bc39278f2e340aeb76e944622",
+   "root_sha256": "1e18cfbe191f62ad3d7bb3f1cdc98c412da0e7d9ba378427ee5d501ae94b5d5b",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseA/C0_paper.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseA/C0_paper.json",
+   "git_blob": "fc5a5e5750355489032b79164c8dd44097fdc51c",
+   "root_sha256": "fd582e62bba13918c28a1e60b1264794a2be79e7617afccdb010a398f3a4cac3",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseA/C0_rc.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseA/C0_rc.json",
+   "git_blob": "68931c08d098bd491e0264f6b038a8dbdde3ad5a",
+   "root_sha256": "9e12a8db035328d69b69cb0fa318620622731a342d2c6a491205bcc81205b6a7",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseD/D1_unit.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseD/D1_unit.json",
+   "git_blob": "76e026554e6661250ef43376d2c5a19a1e803c09",
+   "root_sha256": "94a92db811813e288e02731260e85ebf534bd63029188c6d1f269e7f3dcf9e45",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseD/D2_bias0.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseD/D2_bias0.json",
+   "git_blob": "079ad322dbc1e55a0843f327dddbc6b03da8505c",
+   "root_sha256": "5baa5b7385c6ed74bc43585169f234f48c2a52c96de5ce39922b3d8a5242d712",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseD/D3_unit_bias0.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseD/D3_unit_bias0.json",
+   "git_blob": "5b35f9e5881cbfad11c2b4249c01dff94511ea37",
+   "root_sha256": "d0c44366feefb2bc9975b065d6266fcc637fd35ab87e30447b469e577abe7cc7",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseD/D4_rc_bias0.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseD/D4_rc_bias0.json",
+   "git_blob": "debefe0273d61cf9c8e353108d44e6392bef2dd2",
+   "root_sha256": "7f7b9618d451773112c0fd28bf5b38c7574e668f18595b356425378defac7d11",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseE/E3_fourier_rad.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseE/E3_fourier_rad.json",
+   "git_blob": "71fb74504bcfd201b1f922d60b798b8c2a2a16a2",
+   "root_sha256": "841e9fc8884a2430d2ea07a0a568d60217c6ee01c09f90b2e48cd2ce743d633d",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseE/E4_hard_fourier.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseE/E4_hard_fourier.json",
+   "git_blob": "8c370dd47b0fbce369ce0b260ce014ae4d0e3983",
+   "root_sha256": "751b1c58dd5129d415e5cb9f7b8122802590d8dc47624ada338c7429f238847e",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseE/E4b_hard_fourier_rc.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseE/E4b_hard_fourier_rc.json",
+   "git_blob": "3945c771d26542ea8d5aea8bb3fe760e5bf69ce1",
+   "root_sha256": "700413110e760b0b91f6205eb2d992fb68458d9a2fcb52b4632e1ada991ed466",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseE/E5_hard_fourier_rad.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseE/E5_hard_fourier_rad.json",
+   "git_blob": "4fa4f214807736b15e37f72345b6e95a2d12cc4b",
+   "root_sha256": "3054cb7dd93385f30ded07c1c1a4afbfffc3ae1e5bafcdcbbdb19067719316f5",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseX/X1_hard_tanh2.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseX/X1_hard_tanh2.json",
+   "git_blob": "8280d9e7df731f02e3e915afca5db72af4e7f4b3",
+   "root_sha256": "d4b36200295475db504b315efe3d12fcf76fe17b1bde1eeca2556ee8c48e4973",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseX/X2_hard_tanh2_rc.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseX/X2_hard_tanh2_rc.json",
+   "git_blob": "14b4c714cfa05539d325b78a0bbc2ea6eabd8549",
+   "root_sha256": "c807596a90543f3298c7fbe1602d2ff87c3dc087af65d4f85bb36762fd4b45d5",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseX/X3_supervised_paperconv.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseX/X3_supervised_paperconv.json",
+   "git_blob": "48b6f5ac1f2a8ea6b8f276cc1f6ff95159ca0a11",
+   "root_sha256": "8b282fa94e25624a18c440e49a0f83b48d468af82451d9d129248ea834987a88",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseX/X4_supervised_rcconv.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseX/X4_supervised_rcconv.json",
+   "git_blob": "b238ec2f9d69799ad0747c2d8d6f18fc450120a8",
+   "root_sha256": "bba0b66b764182556034e0ac7ee961ab9c2e6ba241cc6ed0033578067514daf9",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseY/Y1_20K.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseY/Y1_20K.json",
+   "git_blob": "a5a2e44186ad8c33fbb488fe4d7519c5cbd13f1d",
+   "root_sha256": "797eb4b1b70b7a3a8f23b537c29507527a0ffb294ec68f348e83ccda10c20017",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseY/Y1_X2_lrsched.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseY/Y1_X2_lrsched.json",
+   "git_blob": "d97f2a8c0fb61a9c6b27b285e4ca6dbd39eceead",
+   "root_sha256": "0699d960fba76c116e5d66f2219b0085252ec02b386f7522f71ccd9fbc9068df",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseY/Y2_X1_lrsched.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseY/Y2_X1_lrsched.json",
+   "git_blob": "395411d43b348f9168c779c9aabf7ef5b23e6c45",
+   "root_sha256": "c00a70aebb63d68a53feda8a55f192f45db2b284275f334df4cdf11c77a9639d",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseY/Y3_X4_lrsched.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseY/Y3_X4_lrsched.json",
+   "git_blob": "fd062d9e5ce1753d1ad0124a4832a405c3177c9f",
+   "root_sha256": "c37930f4acab80db883c8c100df97505d13e83bf89dda8e98b8e26196d336680",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseY/Y4_C0_lrsched.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseY/Y4_C0_lrsched.json",
+   "git_blob": "723c1c983e9bc376ee7b72bab54be57706219a9a",
+   "root_sha256": "cb03d62affdd802194e5668ffffbdcada06523706e84604c6fb6d42eadd46a1d",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseZ/Z1_Y1_rad.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseZ/Z1_Y1_rad.json",
+   "git_blob": "8e693e8fb795bc78172869a36ac4164bef1291ac",
+   "root_sha256": "9ba09bf7e22a643e34a0fe0e798e6f568f67058b2ea9fc378547c76ff7ac189a",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseZ/Z2_Y1_seed1235.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseZ/Z2_Y1_seed1235.json",
+   "git_blob": "922c53dc1c80966b54ace7acf511d99642a0392c",
+   "root_sha256": "2a8c66b773b9070569b3d40e234d15ccd1e054808a9950222ec0c02451c25a01",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseZ/Z3_Y4_rad.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseZ/Z3_Y4_rad.json",
+   "git_blob": "6872c8aa491f90834eead44e9824c36138e421ce",
+   "root_sha256": "c99081aa34d9a797a7a5c21aca70595b7dc73b270f1f88db500c555c6051e20b",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseZ/Z4_20K.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseZ/Z4_20K.json",
+   "git_blob": "076500141aece21e12703d7a3c1313bcd0a2d99e",
+   "root_sha256": "3a673a207ce0e425f7c57418f892b16934ed609bea34d7bb6fcd18e7610b243c",
+   "status": "identical"
+  },
+  {
+   "root_path": "configs/phaseZ/Z4_Y1_mb128.json",
+   "pinnrp_path": "configs/frozen/batch1_json/phaseZ/Z4_Y1_mb128.json",
+   "git_blob": "384bc52afa808f6e07501065dc916fa495cd019a",
+   "root_sha256": "f5c344e94679bc2902510c472e7912013bdc381272d4ec644f292e24bc2abbb1",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/CONVENTIONS.md",
+   "pinnrp_path": "references/batch1/reports/CONVENTIONS.md",
+   "git_blob": "9e2625d536980adb2b99dfc47ebcb2f0f9f0e33d",
+   "root_sha256": "d72268a0f9360e1848f85bc97ffba85722e7343fe535b513cd24ec05d106c1f3",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/PHASE_A1_CHECKPOINT.md",
+   "pinnrp_path": "references/batch1/reports/PHASE_A1_CHECKPOINT.md",
+   "git_blob": "05e765df4a52d017b1b11455b6242ddc4eb4542d",
+   "root_sha256": "47c5eeb6e297f01564c0f92aa7d7b7d317133a99470c9c5dc85468c609082224",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/PHASE_D_DIAGNOSTIC.md",
+   "pinnrp_path": "references/batch1/reports/PHASE_D_DIAGNOSTIC.md",
+   "git_blob": "9a6bc4a3f1ed51aac973fbd2e789d61af3b1b14f",
+   "root_sha256": "1d9004991d17d769e5c2c7e10543b6afb54a054622456b2c0992939b8643c6d3",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/PHASE_E_SCREEN.md",
+   "pinnrp_path": "references/batch1/reports/PHASE_E_SCREEN.md",
+   "git_blob": "a1e0622da89ba53494849a74e884e60b18438558",
+   "root_sha256": "5dab3efa30467ed96d203a40eacfa07c71caa3cb7c752798fecf8dae6acf41c1",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/PHASE_X_DIAGNOSTIC.md",
+   "pinnrp_path": "references/batch1/reports/PHASE_X_DIAGNOSTIC.md",
+   "git_blob": "24765bfaa2f30c6965ada77a7843be76c5437ce3",
+   "root_sha256": "1de59435c4c4aa0c5af2569c080bcda8b1ed38125f8c9a9a48a0fa0befa6572b",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/PHASE_Y1_20K_BUDGET_DIAGNOSTIC.md",
+   "pinnrp_path": "references/batch1/reports/PHASE_Y1_20K_BUDGET_DIAGNOSTIC.md",
+   "git_blob": "cf68591dd6782a617157f8514950c0496126b7dd",
+   "root_sha256": "48673d8d18152683be9d1a8e0fe9abf2da1866227cf34f83df31c944ff427392",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/PHASE_Y_OPTIMIZER_DIAGNOSTIC.md",
+   "pinnrp_path": "references/batch1/reports/PHASE_Y_OPTIMIZER_DIAGNOSTIC.md",
+   "git_blob": "fd6819f288b5f9ec91023b2b9989c27181e67785",
+   "root_sha256": "5df89bc5151e8fbea9fff9c1bedc3df0a58d90dc5f436fb05235d8f3913133c9",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/PHASE_Z4_20K_BUDGET_DIAGNOSTIC.md",
+   "pinnrp_path": "references/batch1/reports/PHASE_Z4_20K_BUDGET_DIAGNOSTIC.md",
+   "git_blob": "caf54c1015a64ab1f6c7f78aba19cd04c39fbefb",
+   "root_sha256": "b79960efb0cbcd8e3384b14f442901dbfda8db834d73e017aea29d1727f05c4a",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/PHASE_Z_DIAGNOSTIC.md",
+   "pinnrp_path": "references/batch1/reports/PHASE_Z_DIAGNOSTIC.md",
+   "git_blob": "6189ae2bf89b136e270c1033689b76189c770a29",
+   "root_sha256": "90e96bd83ac38b1f592fccdfb49db134b9cd415a2a530407e45aa915122b6978",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/STAGE01_CORRECTIONS.md",
+   "pinnrp_path": "references/batch1/reports/STAGE01_CORRECTIONS.md",
+   "git_blob": "b571d585179b0fc12a1dbd7ddf0f7c85cdea7a2c",
+   "root_sha256": "671a0175b314a007f5f66fb1a8b012f6777d72a31c2dac9d93e50f754aceeb61",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/reports/STAGE0_AUDIT.md",
+   "pinnrp_path": "references/batch1/reports/STAGE0_AUDIT.md",
+   "git_blob": "7da459ae6304bec804da2cad408879b110638b85",
+   "root_sha256": "5c5e218a4fc098c02ca30cb2bd107f46a10c576589d9c5e0c4ee6d986239f775",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseA_summary.csv",
+   "pinnrp_path": "references/batch1/tables/phaseA_summary.csv",
+   "git_blob": "32287e9382fb148291e2d3811401f286fc38a1cf",
+   "root_sha256": "6d12ae6693044c53c4ab0d7bc46468af10fe6c8da3b1c347cda09f723cb81b4f",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseD_oscillation.csv",
+   "pinnrp_path": "references/batch1/tables/phaseD_oscillation.csv",
+   "git_blob": "3d8cb09be72249bfc095b25525c612c4d862c1cb",
+   "root_sha256": "610c975553d63594dbb4e1b828195a5edcf4b4aca6b012fc02ba85efc93b3606",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseE_oscillation.csv",
+   "pinnrp_path": "references/batch1/tables/phaseE_oscillation.csv",
+   "git_blob": "93fe85badf3072f56bd8997111b3db7884d1d775",
+   "root_sha256": "840edb97c20bcd327927c1f723cf1effed22bc43513a15b8f1352da66795548e",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseX_conditioning.csv",
+   "pinnrp_path": "references/batch1/tables/phaseX_conditioning.csv",
+   "git_blob": "34f8e7a7c335f8b6c0a8874d116512c2a0998d18",
+   "root_sha256": "626392b8dcf261f3030a4ad8e3f5e770a87d98c1bbf8d319cba67d99a8f0a96d",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseX_oscillation.csv",
+   "pinnrp_path": "references/batch1/tables/phaseX_oscillation.csv",
+   "git_blob": "ecaefd211f47b4b11697706e8f57869a3bf72668",
+   "root_sha256": "14336e5d358e4b24747e790aef68576084fad9171f7e5faf88b916c41209b1b6",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseY1_20K_checkpoints.csv",
+   "pinnrp_path": "references/batch1/tables/phaseY1_20K_checkpoints.csv",
+   "git_blob": "7113eea2ccd90cb1e1c8a1f5f29eadfe873a6cb1",
+   "root_sha256": "5ba33bdb0302ec896e99d8d80df0031c4b35f07bfe94e76c12fce78222abbf06",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseY_oscillation.csv",
+   "pinnrp_path": "references/batch1/tables/phaseY_oscillation.csv",
+   "git_blob": "dd2fd2e6545962ff32a2cb656a5accd1ad0ab639",
+   "root_sha256": "135535b79838f12c1ca473ec8b3a0f8d94569f98d041bebcd4aa98411c750e50",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseZ4_20K_checkpoints.csv",
+   "pinnrp_path": "references/batch1/tables/phaseZ4_20K_checkpoints.csv",
+   "git_blob": "42ec6ad83057e5302c4ff5b5f4a4ddf6072bf92e",
+   "root_sha256": "27aca9cd14360d2234e3547478ca3a1c2c6157e15f12392185e99ff3c69d5b46",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseZ_oscillation.csv",
+   "pinnrp_path": "references/batch1/tables/phaseZ_oscillation.csv",
+   "git_blob": "051ae5c8838423de7d80cddd8fa246a19a953ba0",
+   "root_sha256": "394f1c83582bf9dfb10391c465847494f4ad6113235e366b81734d164f2b4d51",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseZ_rad_updates.csv",
+   "pinnrp_path": "references/batch1/tables/phaseZ_rad_updates.csv",
+   "git_blob": "ffc4e82babbc5d82a8e7e4309b6fc5ba5eaae4b5",
+   "root_sha256": "00679b9760e2d1eb114a0f5a50c3be17c345242f65b88b1d23046587380b2683",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/phaseZ_temporal.csv",
+   "pinnrp_path": "references/batch1/tables/phaseZ_temporal.csv",
+   "git_blob": "8af33711b7c9aea9fd2070b2e27bb4b2c1905337",
+   "root_sha256": "c7a7f77a913600c3fc3c43b5655bc7330516413e5d33ad4e85db53444c9417f3",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/stage01_fourier_support_FE-D-M1.csv",
+   "pinnrp_path": "references/batch1/tables/stage01_fourier_support_FE-D-M1.csv",
+   "git_blob": "800e6165f7f047db9c05f95fb2b5768de5b9d970",
+   "root_sha256": "87838b3b0e433f7a5156ed037d30eb80d7fe55c1cce9b0fa9464dd99421fc13b",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/stage01_frequency_extractor_uncertainty.csv",
+   "pinnrp_path": "references/batch1/tables/stage01_frequency_extractor_uncertainty.csv",
+   "git_blob": "1762867990d90f32a44f9bf64692b64365277cf6",
+   "root_sha256": "cbb41ebe896f2166a7c5fc393872586913f0c5c83d1a3bd9065bb45559b71155",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/tables/stage01_reference_comparison.csv",
+   "pinnrp_path": "references/batch1/tables/stage01_reference_comparison.csv",
+   "git_blob": "3f060db3b335eacbd402f6b1d9058b8057e06ff2",
+   "root_sha256": "739fa014a5698bf42921a398157f813b1b7b611766b5c09720f8da17d5d09633",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/BA_vanilla__s1234__078a945013.json",
+   "pinnrp_path": "references/batch1/run_configs/BA_vanilla__s1234__078a945013.json",
+   "git_blob": "49aa78aaba7597a9e77f479d598f32a9cea5fcc4",
+   "root_sha256": "a212dc3ba9d88713fd4c3aa972d2c156f43bb5033463795b4885e6694cb65533",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/BA_vanilla__s1234__ceee156ccc.json",
+   "pinnrp_path": "references/batch1/run_configs/BA_vanilla__s1234__ceee156ccc.json",
+   "git_blob": "370d43b55d2ef3230b612737bfccba2c40eb7ef5",
+   "root_sha256": "17cd25f004122a6be22532ed8237d035e77ea74b44a3fff1acd8e60c2227e0b9",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/BB_fourier__s1234__a444dbed46.json",
+   "pinnrp_path": "references/batch1/run_configs/BB_fourier__s1234__a444dbed46.json",
+   "git_blob": "61ba0b6deab9fb402da9e9221bf3f60e7a29e3be",
+   "root_sha256": "8128866db7bc5d50e71e3ecc7c61a610c78704cfedb8222edace6ef1debeaaea",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/BB_fourier__s1234__daf0d9d2d2.json",
+   "pinnrp_path": "references/batch1/run_configs/BB_fourier__s1234__daf0d9d2d2.json",
+   "git_blob": "fdda02d18168d643463035193d3c687c8379937a",
+   "root_sha256": "b107135c2d74fad78b2ac4c98f7db1fc5733f1de5b912525bcdb085b95be3117",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/C0_paper__s1234__c41ccb1cdf.json",
+   "pinnrp_path": "references/batch1/run_configs/C0_paper__s1234__c41ccb1cdf.json",
+   "git_blob": "d636c9a55f2d3dd52fcab105cd33577fec27bac8",
+   "root_sha256": "d8b95f9cf0d3b3f86af340fdc92bf1056341074e9e6af8a786f524533ec813e8",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/C0_paper__s1234__c7f3895159.json",
+   "pinnrp_path": "references/batch1/run_configs/C0_paper__s1234__c7f3895159.json",
+   "git_blob": "c2de8367093eaf03bdc809ffba29ec43e941042d",
+   "root_sha256": "1388062d785de4094e15757bd08052a6bdf875d1d00e8d7a941c9a7064be4244",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/C0_rc__s1234__19d7329daf.json",
+   "pinnrp_path": "references/batch1/run_configs/C0_rc__s1234__19d7329daf.json",
+   "git_blob": "7479adedad7a93df309dcec064946b1764e311b8",
+   "root_sha256": "a0b2dbf1fa346dbad7a36f6225b6891f0a9e7314a3f652fede30afaff1ef1acc",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/C0_rc__s1234__5109dcb8ba.json",
+   "pinnrp_path": "references/batch1/run_configs/C0_rc__s1234__5109dcb8ba.json",
+   "git_blob": "48c997a679ba162c9f5fab0b2a438efe422a9f72",
+   "root_sha256": "17a49a32a4d1c3c1bdcbcff256b5e370bbcccc4b0ca6302e3f81ae215a1fa8a7",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/D1_unit__s1234__43bc9feaab.json",
+   "pinnrp_path": "references/batch1/run_configs/D1_unit__s1234__43bc9feaab.json",
+   "git_blob": "d403e4deca8771c70f886a4673edb6f4ec96c7e7",
+   "root_sha256": "ab52168fdc4f4c82c061310afc32b8fa7a6d8dde5c7d0dfb009e1db3d19474c9",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/D2_bias0__s1234__888357de8d.json",
+   "pinnrp_path": "references/batch1/run_configs/D2_bias0__s1234__888357de8d.json",
+   "git_blob": "86814f7d4e86c42f2a6a38e952a9473bc55354db",
+   "root_sha256": "23f9fedd77d20af3258e5fdd79375513baf3b1b320a46514ecae1087c48b115e",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/D3_unit_bias0__s1234__8d591ef356.json",
+   "pinnrp_path": "references/batch1/run_configs/D3_unit_bias0__s1234__8d591ef356.json",
+   "git_blob": "a5b51edabca7dc51f3ba2a4bb939830830e0ef96",
+   "root_sha256": "30656c57c6ce342c35ca2413e6437e5325573d03ed1c33c3784d1b964d044051",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/D4_rc_bias0__s1234__5c75888484.json",
+   "pinnrp_path": "references/batch1/run_configs/D4_rc_bias0__s1234__5c75888484.json",
+   "git_blob": "53b88f62db160e6dca465e0e87e83070234b6198",
+   "root_sha256": "00ba8689a075d71a6267c0f1ec4415d52785dbb6f7d89060a7a47aa854cfd905",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/E3_fourier_rad__s1234__e029226585.json",
+   "pinnrp_path": "references/batch1/run_configs/E3_fourier_rad__s1234__e029226585.json",
+   "git_blob": "4f2926df095540595e8a274eb8f0d37dd166abc6",
+   "root_sha256": "aad8de245e6d0bab336c4fdf2a7b273f2e53ea38bd8fc89bde1a03ad9cd1401c",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/E4_hard_fourier__s1234__705dd868f0.json",
+   "pinnrp_path": "references/batch1/run_configs/E4_hard_fourier__s1234__705dd868f0.json",
+   "git_blob": "0d8853ec073ddecce442126f23e2690f76d43f67",
+   "root_sha256": "37ea2e8e631d00130ee382e6638db8e6a6eca787fe0d43d74ea74c0f46b82af5",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/E4b_hard_fourier_rc__s1234__1490710f87.json",
+   "pinnrp_path": "references/batch1/run_configs/E4b_hard_fourier_rc__s1234__1490710f87.json",
+   "git_blob": "47147bf56103aaf4f50768f21a1af46f920efa90",
+   "root_sha256": "605420950a28368a16d5bb687232a36eb4bd3b21bc6867007e1ad9ea5ff23465",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/E5_hard_fourier_rad__s1234__14828b53df.json",
+   "pinnrp_path": "references/batch1/run_configs/E5_hard_fourier_rad__s1234__14828b53df.json",
+   "git_blob": "7f56071ba44576a1337ea0ba3883d1b9c34efd02",
+   "root_sha256": "781baa9578a7dd2e36b59be12234dd60192011788dba39f1aa318b5cbfc50c1f",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/X1_hard_tanh2__s1234__e5bc9fd769.json",
+   "pinnrp_path": "references/batch1/run_configs/X1_hard_tanh2__s1234__e5bc9fd769.json",
+   "git_blob": "dcc1d4c2f98a0800e65eb00865581becbdc5661e",
+   "root_sha256": "9dbfc75f37aa309ad5e0bc51566243dedf2fc2bc90f499d39229f1df46224e53",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/X2_hard_tanh2_rc__s1234__2c89a6ce41.json",
+   "pinnrp_path": "references/batch1/run_configs/X2_hard_tanh2_rc__s1234__2c89a6ce41.json",
+   "git_blob": "6925d8cd941bec7be10a9ea9dad2b972ef366f42",
+   "root_sha256": "258a4e2f57ee8bbca9508d9b6f23daf2e4733f454e9faea0e175a18086c2e059",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/X3_supervised_paperconv__s1234__91c8cb1355.json",
+   "pinnrp_path": "references/batch1/run_configs/X3_supervised_paperconv__s1234__91c8cb1355.json",
+   "git_blob": "6eb3b558ef41b9a2dfd78c54e26d306b4ee1b144",
+   "root_sha256": "b7ac6200bee1237264274f6f67d9b65db36d688f301132536019f68847d24385",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/X4_supervised_rcconv__s1234__4087d47936.json",
+   "pinnrp_path": "references/batch1/run_configs/X4_supervised_rcconv__s1234__4087d47936.json",
+   "git_blob": "2fea18c7a5a1a667aaa652fcd5cfa12a698b44a6",
+   "root_sha256": "77b9a3d87cc917842a08c74e7f80bec3b32df324be48ca1838832a201c7cb5fd",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Y1_20K__s1234__36f2d370bf.json",
+   "pinnrp_path": "references/batch1/run_configs/Y1_20K__s1234__36f2d370bf.json",
+   "git_blob": "55bf5092155482968afab0d43700b269d3851fcb",
+   "root_sha256": "20ba98f94d9a4751b0460669f9542d4900b641bb57dc8535252c0acb05fa49df",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Y1_X2_lrsched__s1234__f339765a30.json",
+   "pinnrp_path": "references/batch1/run_configs/Y1_X2_lrsched__s1234__f339765a30.json",
+   "git_blob": "8668089ffa969acc7d418a27c013cedf44a4670d",
+   "root_sha256": "f2adbae625153d6fc2532a7861b5843bf8cccb7f1308bdfb01ea00b79666d878",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Y2_X1_lrsched__s1234__6e16e6265c.json",
+   "pinnrp_path": "references/batch1/run_configs/Y2_X1_lrsched__s1234__6e16e6265c.json",
+   "git_blob": "2744eec3599db902ce6c11247b5ab478c96fc04b",
+   "root_sha256": "88d53be6c98418f71835a891e84a853144ac7dce410f782d53850617d036d9bc",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Y3_X4_lrsched__s1234__927e45d6c7.json",
+   "pinnrp_path": "references/batch1/run_configs/Y3_X4_lrsched__s1234__927e45d6c7.json",
+   "git_blob": "7284d8668229d213b8655e1b64dd377c77cf75c5",
+   "root_sha256": "1787ff8b90c325dee22af364c97f446e8e28b252da235c4b1c376b3733ec7bc5",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Y4_C0_lrsched__s1234__090061eae3.json",
+   "pinnrp_path": "references/batch1/run_configs/Y4_C0_lrsched__s1234__090061eae3.json",
+   "git_blob": "278742d03cd376aade6ae3299e77759881b32b36",
+   "root_sha256": "aecc7a5a6a3eeada68f90f15363454224ee9c8e39ff379be24fbb1a5116e891e",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Z1_Y1_rad__s1234__4b8f246882.json",
+   "pinnrp_path": "references/batch1/run_configs/Z1_Y1_rad__s1234__4b8f246882.json",
+   "git_blob": "a75aa837a388be6a9f40c4c4b6b7670902ef651d",
+   "root_sha256": "714bc0793e2b0388197551eacb1861c13f54d723c4f59938e86b56db484dc13d",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Z2_Y1_seed1235__s1235__c6221f33ef.json",
+   "pinnrp_path": "references/batch1/run_configs/Z2_Y1_seed1235__s1235__c6221f33ef.json",
+   "git_blob": "7c604dceca663f6f54246fcc0c5d084cce5ba94d",
+   "root_sha256": "2b9dd2c1a4e9393358febd8cb04805b0b39fd5748aca11f46f2064d7771f7016",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Z3_Y4_rad__s1234__335b3f3987.json",
+   "pinnrp_path": "references/batch1/run_configs/Z3_Y4_rad__s1234__335b3f3987.json",
+   "git_blob": "6bd19f95dd0317e0b5a107440b036a71c90e89e4",
+   "root_sha256": "b6af524491605e7f9bab28865d08b56dc61089d27a93ea511b9ab34940ea8300",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Z4_20K__s1234__fa8fa7fe7e.json",
+   "pinnrp_path": "references/batch1/run_configs/Z4_20K__s1234__fa8fa7fe7e.json",
+   "git_blob": "7bf59a34d86cf6b57b4522b13e127148be2d3dbe",
+   "root_sha256": "4703d457a73a0c2b4571059eba0be8c54a804c79c48dee8ca0a7b99d81406d59",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/configs/Z4_Y1_mb128__s1234__f78aa7f1da.json",
+   "pinnrp_path": "references/batch1/run_configs/Z4_Y1_mb128__s1234__f78aa7f1da.json",
+   "git_blob": "7b91a74614f96da984961d0a063fdb7ac9fb6851",
+   "root_sha256": "54e8d13285f373a42380c702fc5fe18e9bbb0c875ccdc163c54d7258cb143a6e",
+   "status": "identical"
+  },
+  {
+   "root_path": "experiments/update_leaderboard.py",
+   "pinnrp_path": "experiments/update_leaderboard.py",
+   "git_blob": "07dead9d8e37e47bb2e637d769571b55a2eeb4cf",
+   "root_sha256": "3f2464c446507ae3af41b363eef4b3c00f2b366371f4c02e2a237eb85ed1ace3",
+   "status": "modified",
+   "pinnrp_sha256": "33bb22271049bf14b449a22a43e30ebc898aba66d46ce2505e064c399c38e1e0",
+   "reason": "default board/log paths moved to results_batch2/"
+  },
+  {
+   "root_path": "optimization_leaderboard.csv",
+   "pinnrp_path": "references/batch1/optimization_leaderboard.csv",
+   "git_blob": "b27696d8821aa7055f9830e1c97c3998f94d2bf6",
+   "root_sha256": "bc8b5e978f7778a5637e299499d3258738b6d3ed4147e510e96c5f61bc6346b4",
+   "status": "identical"
+  },
+  {
+   "root_path": "paper_benchmark_registry.csv",
+   "pinnrp_path": "references/batch1/paper_benchmark_registry.csv",
+   "git_blob": "12f56331db3a29943dd3d3cf9a34193de1de6704",
+   "root_sha256": "3e1f4dfaf933b81c96f70f90a863ecf6ccae8ed6e87d7b052721bf15c0596141",
+   "status": "identical"
+  },
+  {
+   "root_path": "REPORT.md",
+   "pinnrp_path": "references/batch1/LEGACY_REPORT.md",
+   "git_blob": "18c74ed07ddd91523fe57f07179d27c15062dbde",
+   "root_sha256": "63b9fd0bc7ba39cb665dc0cb226c2b782f713700d39c5d424fb4b67d59e20cfc",
+   "status": "identical"
+  },
+  {
+   "root_path": "presentation_summary.md",
+   "pinnrp_path": "references/batch1/presentation_summary.md",
+   "git_blob": "fabf66daa67e9e7dc0fbec756d0f06ca65d158a8",
+   "root_sha256": "961ce8db47aa95cac2633833defdf2f0dc57676bfc5718db7cc49e866d5c6fed",
+   "status": "identical"
+  },
+  {
+   "root_path": "requirements.txt",
+   "pinnrp_path": "requirements.txt",
+   "git_blob": "31d131ce6b31e77104b5904f9a0e2cb65b015911",
+   "root_sha256": "2f6ad60d6edef2acdb7af14193ec7f0d928515b743c71283319cc34595c90353",
+   "status": "modified",
+   "pinnrp_sha256": "78c6c38aa1cbb75acf93dd98aed7e5444d79413ee42d51e6391870bb5c2f91e1",
+   "reason": "added pyyaml and pytest (Batch-2 tooling); Batch-1 pins unchanged"
+  },
+  {
+   "root_path": "pyproject.toml",
+   "pinnrp_path": "pyproject.toml",
+   "git_blob": "570dc54992ccba665e673882a735d9668fa08cd9",
+   "root_sha256": "3b2e421f5bafc02493d6f81053fc3839c0fc708fbf2088f97d87d8a71e048657",
+   "status": "modified",
+   "pinnrp_sha256": "2f6599523ed1ea6773e53e0d27c4c809d863e798b0ede5378d12b0b4b68280af",
+   "reason": "package discovery and project name for PINN-RP; Batch-1 pytest settings unchanged"
+  },
+  {
+   "root_path": "results_optimization/logs/BA_vanilla__s1234__078a945013/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/BA_vanilla__s1234__078a945013.metrics.json",
+   "git_blob": "a339efb31b8d33f66247ee4c6f238ce0a4ff7569",
+   "root_sha256": "69c8b6d16df9edcbab06e6b63b9f7d3575985b95328aedc2cb70cd6cfbc83db1",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/BA_vanilla__s1234__ceee156ccc/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/BA_vanilla__s1234__ceee156ccc.metrics.json",
+   "git_blob": "32b5c104f1bf73bbc714312e49f96fc28734976e",
+   "root_sha256": "374a5d5c3ff8e357b9f841304e9336048e9e30608a9bcbc92087b4f7352f5adf",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/BB_fourier__s1234__a444dbed46/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/BB_fourier__s1234__a444dbed46.metrics.json",
+   "git_blob": "b6f22a69b70d484c81681b15103977e5bad9cc70",
+   "root_sha256": "02f24b47bd46a17e770b2cf293233afe7e8d3cbd03ae09faa14a2500370afa3f",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/BB_fourier__s1234__daf0d9d2d2/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/BB_fourier__s1234__daf0d9d2d2.metrics.json",
+   "git_blob": "8f854d5bc199c2947bc4f2e4ba0fc07839b40090",
+   "root_sha256": "aeaa3ad03ba836483b77ef78ceed4af4547ebb7dfe02b227e4855555d6cf0f54",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/C0_paper__s1234__c41ccb1cdf/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/C0_paper__s1234__c41ccb1cdf.metrics.json",
+   "git_blob": "cb8609e2c4360059bb196a1b7afdeda3b09aeed3",
+   "root_sha256": "066a85d15dddd20b3132ad6de68e899a9e441eed189668e24fa5f1758eb245c8",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/C0_paper__s1234__c7f3895159/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/C0_paper__s1234__c7f3895159.metrics.json",
+   "git_blob": "67b436a5660725814371f86b796c31c59520d040",
+   "root_sha256": "4d433f124b5ca17db66ce40fb2201c829a133dd79803bfe9f7532d16dca00899",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/C0_rc__s1234__19d7329daf/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/C0_rc__s1234__19d7329daf.metrics.json",
+   "git_blob": "fd5ce57aa097b66fb4da35136b88ed7baa1ba89d",
+   "root_sha256": "f790aede86903a8c9e52be62b94e1b7fc81ea3c6a190e877f7893faf48d64917",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/C0_rc__s1234__5109dcb8ba/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/C0_rc__s1234__5109dcb8ba.metrics.json",
+   "git_blob": "b6088ceec8efe0d5d746a63982137de470735a97",
+   "root_sha256": "11a484098ad6322c051365a97ef3535ff952487ece904efe4c2bde66b51820d6",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/D1_unit__s1234__43bc9feaab/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/D1_unit__s1234__43bc9feaab.metrics.json",
+   "git_blob": "9cb101db4d6f509a374ad7d79eaedf649c7a2cd4",
+   "root_sha256": "6c72042b56627873b41ab1bd59780deed57d8fcfad0ddcabd7b139c034fefee0",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/D2_bias0__s1234__888357de8d/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/D2_bias0__s1234__888357de8d.metrics.json",
+   "git_blob": "5f15aba20bc7db4678aa541e65c886ef087a8445",
+   "root_sha256": "e44a43546ca1dc22060ac7a77179739d28bb62c64473a262ad7417f343375cbe",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/D3_unit_bias0__s1234__8d591ef356/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/D3_unit_bias0__s1234__8d591ef356.metrics.json",
+   "git_blob": "159477749baeea2c4e94b7613887cf3ad44c57b0",
+   "root_sha256": "3bd2dd251cb1a2cba4da2f8e56273b16328ac0772088e836b7724a08d01bb83f",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/D4_rc_bias0__s1234__5c75888484/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/D4_rc_bias0__s1234__5c75888484.metrics.json",
+   "git_blob": "b71d733a983c104e1b6b0822ff879acf03363436",
+   "root_sha256": "3fa1343bb27c9aa0c4e123c0135ee563469383916285f620f4f30b602872124c",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/E3_fourier_rad__s1234__e029226585/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/E3_fourier_rad__s1234__e029226585.metrics.json",
+   "git_blob": "26ce6d275b8080220f75975c2f675f578f4879be",
+   "root_sha256": "2c7c8ad3877751a989dd4fac23339103ebaf181e7403ca67ddbbc3af984c9787",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/E4_hard_fourier__s1234__705dd868f0/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/E4_hard_fourier__s1234__705dd868f0.metrics.json",
+   "git_blob": "59ebbe680378c1f58e97164303cace8f9d30d526",
+   "root_sha256": "5b432d01a18c92009c29c8d438ae41df5c50a6ebe06eed1b693fa057b4a3f540",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/E4b_hard_fourier_rc__s1234__1490710f87/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/E4b_hard_fourier_rc__s1234__1490710f87.metrics.json",
+   "git_blob": "f851275562a2fb4c6304e40da22a52ed0a3b3adb",
+   "root_sha256": "0cd97966dd2daa97c83840f170076832ca14ca92811685b355e91a09ef090b42",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/E5_hard_fourier_rad__s1234__14828b53df/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/E5_hard_fourier_rad__s1234__14828b53df.metrics.json",
+   "git_blob": "a085463d3b3b2e97dd01b2e6e887b1d5bfeccaa3",
+   "root_sha256": "8c66329275347f08b61ff31e05810ca28f734b28707ba45de7a73355f7412ffc",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/X1_hard_tanh2__s1234__e5bc9fd769/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/X1_hard_tanh2__s1234__e5bc9fd769.metrics.json",
+   "git_blob": "86698910e7f8ff677b5b42a6b8967a48124ef3a1",
+   "root_sha256": "150b8185cd75f708c4b83483caddab4bd9a40087a7361a7be764d8cf32315f0f",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/X2_hard_tanh2_rc__s1234__2c89a6ce41/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/X2_hard_tanh2_rc__s1234__2c89a6ce41.metrics.json",
+   "git_blob": "f87fa91aaf04be52f1c66c357c21d5db33a9bf4a",
+   "root_sha256": "e1652bc98fe64cb4a71e5b35513bb1380b2088295417c4597f3b68de2e154550",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/X3_supervised_paperconv__s1234__91c8cb1355/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/X3_supervised_paperconv__s1234__91c8cb1355.metrics.json",
+   "git_blob": "caaa66c5efe5a1bcaa57c8cc66f99c79c2b7611b",
+   "root_sha256": "696e7fc59df052eb5c835e0c2fc4f0762dc8458becc7a641b87bfcf8ce33e203",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/X4_supervised_rcconv__s1234__4087d47936/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/X4_supervised_rcconv__s1234__4087d47936.metrics.json",
+   "git_blob": "9e8374a3948a09f292ff01b70292fd903ed5092f",
+   "root_sha256": "e0497b4ad9bf45324b3a07421cd3216c6b3f8dae3920c28c635701f687443606",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Y1_20K__s1234__36f2d370bf/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Y1_20K__s1234__36f2d370bf.metrics.json",
+   "git_blob": "81b15d489080b8b9ec8bad0322629ce097ebd6c1",
+   "root_sha256": "398244d8bcf3285836803ff1725e7e6262c27b515d686825440b3588b289256d",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Y1_X2_lrsched__s1234__f339765a30/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Y1_X2_lrsched__s1234__f339765a30.metrics.json",
+   "git_blob": "14078b07df4b947af3a7e40325b2fd1c0bfd8a65",
+   "root_sha256": "d044326a1c36c009b0d49de6fb271decef0df6221ec48e2682f937e4ffc1c981",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Y2_X1_lrsched__s1234__6e16e6265c/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Y2_X1_lrsched__s1234__6e16e6265c.metrics.json",
+   "git_blob": "d1dbc1e9ea94dd502e82a05ca45cbf5c9e1c5f70",
+   "root_sha256": "5994795f86572324cea4f7e72c482f30400b8d06a80ee351691545b87791b7ed",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Y3_X4_lrsched__s1234__927e45d6c7/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Y3_X4_lrsched__s1234__927e45d6c7.metrics.json",
+   "git_blob": "c42d4510029ee4d123ae857fc9482a2eae821f4e",
+   "root_sha256": "41cf4974826c77c933828dd98a923373549fe1a5a29ea03d444cbbed08690474",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Y4_C0_lrsched__s1234__090061eae3/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Y4_C0_lrsched__s1234__090061eae3.metrics.json",
+   "git_blob": "c0ae0cddd60fb4c5f375d1331953fcb363fdca8a",
+   "root_sha256": "6c2d91abe86d985df9712e28ed22ec616136c33a3118c750a165aac0ce2efd8a",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Z1_Y1_rad__s1234__4b8f246882/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Z1_Y1_rad__s1234__4b8f246882.metrics.json",
+   "git_blob": "c1a19602c903953f273fd7082feec79cede220a2",
+   "root_sha256": "54218663568313fc7556a50592dc075386192cf0015566255679d352d757d9ff",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Z2_Y1_seed1235__s1235__c6221f33ef/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Z2_Y1_seed1235__s1235__c6221f33ef.metrics.json",
+   "git_blob": "ec541c2ba372d0afeab970e8c6e5312a60be7f38",
+   "root_sha256": "4d03b2dc726da60fb5a45de962fafb9e4b53396dc8ee189465f155a2e26ddd27",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Z3_Y4_rad__s1234__335b3f3987/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Z3_Y4_rad__s1234__335b3f3987.metrics.json",
+   "git_blob": "95a8ffc44b8615e4002f1750a2c93f2d83ca1ce4",
+   "root_sha256": "15ca15fdc1752bf5d7adf0404977a558a3075aa6aa13c02c6a1debcb7e872282",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Z4_20K__s1234__fa8fa7fe7e/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Z4_20K__s1234__fa8fa7fe7e.metrics.json",
+   "git_blob": "7fe4423dd60751f373e0e22e683abbea275823d5",
+   "root_sha256": "544daf73228a2c611942f1c209bb3d4e4fa02e79ac5a28cac20736d3a8ceba3a",
+   "status": "identical"
+  },
+  {
+   "root_path": "results_optimization/logs/Z4_Y1_mb128__s1234__f78aa7f1da/metrics.json",
+   "pinnrp_path": "references/batch1/run_metrics/Z4_Y1_mb128__s1234__f78aa7f1da.metrics.json",
+   "git_blob": "5732108fbd472794cc5053c1ea1ed2b9b0c114fc",
+   "root_sha256": "d5a06b06e82109a194a56de0b6ab8ca171bece7124f65ccb364b0f69be03d3c5",
+   "status": "identical"
+  }
+ ]
+}

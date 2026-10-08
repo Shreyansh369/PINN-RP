@@ -51,3 +51,17 @@ B2-E03-LBFGS-F-s1236
 B2-E03-LBFGS-R-s1236
 B2-E03-LBFGS-4X-s1236
 B2-E03-ADAM-FULL-s1236
+# B2-E05 window-law sweep. Written PI approval given in chat on 2026-10-09 00:52 IST
+# (autopilot overnight run; see sprint/AUTOPILOT.md for the bounded pre-authorisation of later families).
+B2-E05-W1000-s1234
+B2-E05-W250-s1234
+B2-E05-W100-s1234
+B2-E05-W050-s1234
+B2-E05-W1000-s1235
+B2-E05-W250-s1235
+B2-E05-W100-s1235
+B2-E05-W050-s1235
+B2-E05-W1000-s1236
+B2-E05-W250-s1236
+B2-E05-W100-s1236
+B2-E05-W050-s1236

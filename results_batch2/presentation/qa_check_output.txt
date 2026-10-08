@@ -1,0 +1,71 @@
+OK   slide  3: '4.64 × 10⁻⁴'              source '4.64 × 10⁻⁴'              [paper_benchmark_registry.csv FE-D-M1 paper_error (published)]
+OK   slide  3: '20.6 Hz'                  source '20.6 Hz'                  [exact reference (beampinn)]
+OK   slide  4: '26'                       source '26'                       [optimization_leaderboard.csv rows]
+OK   slide  5: 'L2 3.26'                  source 'L2 3.26'                  [optimization_leaderboard.csv C0_paper]
+OK   slide  5: 'L2 0.909'                 source 'L2 0.909'                 [optimization_leaderboard.csv X2]
+OK   slide  5: 'L2 0.526'                 source 'L2 0.526'                 [optimization_leaderboard.csv Z4]
+OK   slide  5: 'L2 0.263'                 source 'L2 0.263'                 [optimization_leaderboard.csv Z4_20K]
+OK   slide  5: '≈ 3.2 cycles'             source '≈ 3.2 cycles'             [tables/phaseZ4_20K_checkpoints.csv 5k (= Z4)]
+OK   slide  5: '≈ 8.1 cycles'             source '≈ 8.1 cycles'             [tables/phaseZ4_20K_checkpoints.csv 20k]
+OK   slide  6: '8.4 × 10³'                source '8.4 × 10³'                [N*(t) from exact solution = profiles/phaseE_ansatz_conditioning.txt (−8368.7)]
+OK   slide  7: '129.25'                   source '129.25'                   [tables/phaseX_oscillation.csv X3]
+OK   slide  7: '129.37'                   source '129.37'                   [tables/phaseX_oscillation.csv X4]
+OK   slide  7: '129.32'                   source '129.32'                   [tables/phaseX_oscillation.csv w_exact]
+OK   slide  7: '1.2 → 3.1 → 3.2 → 8.1'    source '1.2 → 3.1 → 3.2 → 8.1'    [checkpoint tables Y1/Z4 5k, 20k]
+OK   slide  7: '0.16M → 2.56M'            source '0.16M → 2.56M'            [checkpoint tables]
+OK   slide  7: '1.6 cycles'               source '1.6 cycles'               [reports/PHASE_Y1_20K_BUDGET_DIAGNOSTIC.md (Z1)]
+OK   slide  7: 'L2 0.263'                 source 'L2 0.263'                 [optimization_leaderboard.csv]
+OK   slide  8: '2.56M PDE evaluations'    source '2.56M PDE evaluations'    [tables/phaseZ4_20K_checkpoints.csv]
+OK   slide  8: 'L2 0.263'                 source 'L2 0.263'                 [tables/phaseZ4_20K_checkpoints.csv]
+OK   slide  8: '≈ 8.1 cycles'             source '≈ 8.1 cycles'             [tables/phaseZ4_20K_checkpoints.csv]
+OK   slide  8: '0.393 s'                  source '0.393 s'                  [tables/phaseZ4_20K_checkpoints.csv]
+OK   slide  8: '129.2 rad/s'              source '129.2 rad/s'              [tables/phaseZ4_20K_checkpoints.csv fit_w]
+OK   slide  8: '2.88 × 10⁷'               source '2.88 × 10⁷'               [reports/STAGE01_CORRECTIONS.md (paper schedule)]
+OK   slide  8: '≈ 20.6'                   source '≈ 20.6'                   [exact reference: 1 s × f_d]
+OK   slide 11: '241,601'                  source '241,601'                  [reports/PHASE_Z4_20K_BUDGET_DIAGNOSTIC.md]
+OK   slide 11: '4.386e-4'                 source '4.386e-4'                 [tables/stage01_reference_comparison.csv]
+OK   slide 12: '2.60'                     source '2.60'                     [optimization_leaderboard.csv BA_vanilla (3 s.f., must appear in the matrix)]
+OK   slide 12: '1.81'                     source '1.81'                     [optimization_leaderboard.csv BB_fourier (3 s.f., must appear in the matrix)]
+OK   slide 12: '3.26'                     source '3.26'                     [optimization_leaderboard.csv C0_paper (3 s.f., must appear in the matrix)]
+OK   slide 12: '1.73'                     source '1.73'                     [optimization_leaderboard.csv C0_rc (3 s.f., must appear in the matrix)]
+OK   slide 12: '1.86'                     source '1.86'                     [optimization_leaderboard.csv D3_unit_bias0 (3 s.f., must appear in the matrix)]
+OK   slide 12: '1.11'                     source '1.11'                     [optimization_leaderboard.csv D4_rc_bias0 (3 s.f., must appear in the matrix)]
+OK   slide 12: '2.49'                     source '2.49'                     [optimization_leaderboard.csv D2_bias0 (3 s.f., must appear in the matrix)]
+OK   slide 12: '1.78'                     source '1.78'                     [optimization_leaderboard.csv D1_unit (3 s.f., must appear in the matrix)]
+OK   slide 12: '1.61'                     source '1.61'                     [optimization_leaderboard.csv E4b_hard_fourier_rc (3 s.f., must appear in the matrix)]
+OK   slide 12: '2.83'                     source '2.83'                     [optimization_leaderboard.csv E4_hard_fourier (3 s.f., must appear in the matrix)]
+OK   slide 12: '2.21'                     source '2.21'                     [optimization_leaderboard.csv E3_fourier_rad (3 s.f., must appear in the matrix)]
+OK   slide 12: '2.84'                     source '2.84'                     [optimization_leaderboard.csv E5_hard_fourier_rad (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.316'                    source '0.316'                    [optimization_leaderboard.csv X4_supervised_rcconv (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.463'                    source '0.463'                    [optimization_leaderboard.csv X3_supervised_paperconv (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.909'                    source '0.909'                    [optimization_leaderboard.csv X2_hard_tanh2_rc (3 s.f., must appear in the matrix)]
+OK   slide 12: '1.50'                     source '1.50'                     [optimization_leaderboard.csv X1_hard_tanh2 (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.120'                    source '0.120'                    [optimization_leaderboard.csv Y3_X4_lrsched (3 s.f., must appear in the matrix)]
+OK   slide 12: '1.47'                     source '1.47'                     [optimization_leaderboard.csv Y2_X1_lrsched (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.774'                    source '0.774'                    [optimization_leaderboard.csv Y1_X2_lrsched (3 s.f., must appear in the matrix)]
+OK   slide 12: '2.75'                     source '2.75'                     [optimization_leaderboard.csv Y4_C0_lrsched (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.799'                    source '0.799'                    [optimization_leaderboard.csv Z2_Y1_seed1235 (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.718'                    source '0.718'                    [optimization_leaderboard.csv Z1_Y1_rad (3 s.f., must appear in the matrix)]
+OK   slide 12: '2.60'                     source '2.60'                     [optimization_leaderboard.csv Z3_Y4_rad (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.526'                    source '0.526'                    [optimization_leaderboard.csv Z4_Y1_mb128 (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.550'                    source '0.550'                    [optimization_leaderboard.csv Y1_20K (3 s.f., must appear in the matrix)]
+OK   slide 12: '0.263'                    source '0.263'                    [optimization_leaderboard.csv Z4_20K (3 s.f., must appear in the matrix)]
+OK   trace Z4: collapse from frozen checkpoint 0.15325 s == frozen table 0.15325 s
+OK   trace Z4_20K: collapse from frozen checkpoint 0.39325 s == frozen table 0.39325 s
+OK   conditioning range_t2: -8368.67..-1.021 vs frozen profile -8368.7..-1.02
+OK   conditioning range_tanh2: -1.93..-0.158 vs frozen profile -1.93..-0.158
+OK   13 slides: 10 main + 3 appendix
+OK   paper 4.64e-4 appears on slides [3, 8], always attributed to the paper
+OK   no Batch-1 result labelled successful; no superiority claims
+OK   slide 7 shows the explicit status box
+OK   no Mode-2 content anywhere
+OK   railway appears only on slide(s) [10], marked future work with no results
+OK   'novel' used only in negated/honesty context (1 occurrences)
+OK   slide 9 labels the solver strategy a research hypothesis
+OK   prior-art components explicitly not claimed (slides 9, 13)
+OK   slide 5 (data graph) poses an explicit question (slide text or chart title)
+OK   slide 6 (data graph) poses an explicit question (slide text or chart title)
+OK   slide 8 (data graph) poses an explicit question (slide text or chart title)
+OK   final message present verbatim in slide-10 speaker notes
+OK   every slide has speaker notes
+ALL CHECKS PASSED

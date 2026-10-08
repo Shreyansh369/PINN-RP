@@ -1,7 +1,7 @@
 # STATUS (autopilot state; read first, write last)
 
 state: RUNNING
-phase: A
+phase: B
 lock_until: 2026-10-09 02:45 IST
 deadline: 2026-10-12 23:59 IST
 candidates_tried: 0
@@ -22,7 +22,17 @@ Smoke test (W050, 100 steps, scratch only): 0.17 s/step, ~1.5 s per window for R
 peak ~1.4 GB.
 
 ## Last session
-(none yet)
+Session 1 (2026-10-09 00:54-, autopilot, cloud, nproc = 2 -> 1 run at a time, 1 thread each).
+- Env: torch 2.14.0 (PyPI wheel, CPU used), numpy 2.4.6, scipy 1.17.1, pandas 3.0.5 (pinned per requirements.txt).
+- Decision (PI note): this session had written a parallel Block-1 implementation before seeing the merge; it was
+  DISCARDED unpushed in favour of the merged browser implementation (same contract, more tests, already
+  smoke-tested). Reason: PI instruction; mine was not demonstrably better and was untested at the time.
+- Full test suite: 1 stale failure, tests/test_b2_metrics_and_tools.py::test_training_gate_only_approved_ids
+  hard-coded the approval set without the PI-approved B2-E05 IDs; test updated to include them (no gate code
+  changed). Re-run: 179 passed, 6 skipped. PHASE A COMPLETE.
+- Concurrency note: pre-registration section 6 says "3 at a time on 4 cores"; this machine has 2 cores, so runs
+  execute ONE at a time (AUTOPILOT rule cores-1). Declared here; affects only wall-clock comparability.
 
 ## Next step
-Phase A: Block 1 of sprint/SPRINT_24H_v2_CLAUDE_CODE.md (hypotheses doc, windowed trainer, tests).
+Phase B: seed 1234 runs in order W1000, W050, W100, W250 (AUTOPILOT order), one at a time; then Block 3
+(scripts/analyze_b2_e05.py implementing pre-registration sections 6-8) and the gate.

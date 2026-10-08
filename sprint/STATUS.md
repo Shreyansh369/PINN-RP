@@ -1,8 +1,8 @@
 # STATUS (autopilot state; read first, write last)
 
-state: RUNNING
+state: PAUSED (user stop 01:44 IST; awaiting PI note to resume)
 phase: B
-lock_until: 2026-10-09 02:45 IST
+lock_until:
 deadline: 2026-10-12 23:59 IST
 candidates_tried: 0
 runs_used: 0
@@ -39,6 +39,19 @@ Session 1 (2026-10-09 00:54-, autopilot, cloud, nproc = 2 -> 1 run at a time, 1 
   W250 were cancelled (never started). W050 was left running. No further work until the user/PI says how to proceed.
   The lock is kept while W050 runs. A later session must check whether W050 finished
   (results_batch2/runs/B2-E05-W050-s1234/logs/*/metrics.json); if it did not, record it as "interrupted" in RUN_LOG.
+
+## Session 2 (2026-10-09 03:54 IST, scheduled, cloud) — DID NOT TRAIN
+- Lock had expired (02:45). Merged origin/claude/pinn-beam-vibration-opt-a946fl (1 commit b9e859f, Oct 7,
+  B2-PRES-001 presentation files only; additive, no code under test touched).
+- W050-s1234 check: no metrics.json; partial logs stop at window 4/20 (160k of 640k evals). Recorded in
+  RUN_LOG.csv as "interrupted" (not a result).
+- DECISION: no new training launched. Reason: the last explicit instruction from the user (01:44 IST, after
+  the scheduled-task prompt was written) was to STOP and wait, and Session 1 recorded "No further work until
+  the user/PI says how to proceed". A standing scheduled prompt does not override a later explicit stop.
+  state set to PAUSED; PI notified by push notification.
+- TO RESUME: PI adds a dated note here (or tells a session) saying to continue; then set state: RUNNING.
+  Next work on resume: re-run W050-s1234 from scratch (fresh run, the interrupted one is not resumed), then
+  W100, W250, Block 3 analysis and the gate. Remaining budget unchanged (runs_used 0 of the D-phase 60).
 
 ## Next step
 Phase B: seed 1234 runs in order W1000, W050, W100, W250 (AUTOPILOT order), one at a time; then Block 3

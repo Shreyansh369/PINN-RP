@@ -1,0 +1,16 @@
+# B2-E05 - Damping-bias law: sequential time windows with exact modal (u, u_t) hand-off, one change
+# relative to B1 (the window length T_w). Pre-registration: docs/hypotheses/B2-E05.md.
+# Code: src/physref/windowed.py (WindowedTrainer). Training requires PI approval of each ID.
+experiment: B2-E05
+status: pending_approval
+base_frozen: batch1_hard_tanh2      # B1; CPU, float32, 1 thread, seed handling unchanged
+max_steps: 5000                     # x mini-batch 128 = 640,000 PDE evaluations per arm, split equally over windows
+seeds_stage1: [1234]
+seeds_stage2: [1235, 1236]          # NOT requested; Block 4 (W100, W050 + best arm) only after the Block-3 gate
+arms:
+  W1000: {kind: windowed, T_w: 1.0,  change: "T_w = 1.0 s (1 window, 5000 steps): B1 verbatim (harness check)"}
+  W250:  {kind: windowed, T_w: 0.25, change: "T_w = 0.25 s (4 windows x 1250 steps), 8-mode (u, u_t) hand-off, transfer init, optimiser restart"}
+  W100:  {kind: windowed, T_w: 0.1,  change: "T_w = 0.10 s (10 windows x 500 steps), 8-mode (u, u_t) hand-off, transfer init, optimiser restart"}
+  W050:  {kind: windowed, T_w: 0.05, change: "T_w = 0.05 s (20 windows x 250 steps), 8-mode (u, u_t) hand-off, transfer init, optimiser restart"}
+primary_metric: decay_error                 # fit_lam - 3.54 (frozen damped-cosine fit at mid-span)
+secondary_metrics: [L2_exact, L2_late_exact, persistence_cycles, persistence_cycles_vel, amp_ratio_t0.1, amp_ratio_t0.25, amp_ratio_t0.5, amp_ratio_t0.75, amp_ratio_t1, fit_w, PDE_residual_rel, R_k_mean, R_k_max, handoff_projection_error_max, train_seconds, handoff_seconds, peak_rss_mb]

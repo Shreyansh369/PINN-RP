@@ -103,6 +103,19 @@ def main():
         if st == "completed":
             tr.finalise()
         return
+    if spec["arms"][a.arm]["kind"] == "windowed":                     # B2-E05 window law (physref.windowed)
+        import csv as _csv
+        from physref.windowed import WindowedTrainer, results_row
+        tr = WindowedTrainer(cfg, run_dir, spec["arms"][a.arm]["T_w"])
+        st = tr.run()
+        print("status:", st)
+        if st == "completed":
+            import json as _json
+            m = _json.load(open(tr.paths["logs"] / "metrics.json"))
+            row = results_row(a.arm, m)
+            with open(run_dir / "results_row.csv", "w", newline="") as f:
+                w = _csv.DictWriter(f, fieldnames=list(row)); w.writeheader(); w.writerow(row)
+        return
     from physref.arms import ArmTrainer
     tr = ArmTrainer(cfg, a.arm, run_dir.parent, exp_id, strict=True)
     st = tr.run(steps, snapshot_every=spec.get("snapshot_every"))

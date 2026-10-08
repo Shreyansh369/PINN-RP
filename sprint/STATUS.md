@@ -33,6 +33,13 @@ Session 1 (2026-10-09 00:54-, autopilot, cloud, nproc = 2 -> 1 run at a time, 1 
 - Concurrency note: pre-registration section 6 says "3 at a time on 4 cores"; this machine has 2 cores, so runs
   execute ONE at a time (AUTOPILOT rule cores-1). Declared here; affects only wall-clock comparability.
 
+- Runs: B2-E05-W1000-s1234 completed (harness: bit-identical to logged B1, L2 0.52639; d meas 5.44 vs pred 6.29).
+  B2-E05-W050-s1234 launched 01:41 IST, IN PROGRESS at 01:45 (partial outputs committed; not a result).
+- 01:44 IST: the user rejected a tool call and asked the session to STOP and wait. Queued launches of W100 and
+  W250 were cancelled (never started). W050 was left running. No further work until the user/PI says how to proceed.
+  The lock is kept while W050 runs. A later session must check whether W050 finished
+  (results_batch2/runs/B2-E05-W050-s1234/logs/*/metrics.json); if it did not, record it as "interrupted" in RUN_LOG.
+
 ## Next step
 Phase B: seed 1234 runs in order W1000, W050, W100, W250 (AUTOPILOT order), one at a time; then Block 3
 (scripts/analyze_b2_e05.py implementing pre-registration sections 6-8) and the gate.

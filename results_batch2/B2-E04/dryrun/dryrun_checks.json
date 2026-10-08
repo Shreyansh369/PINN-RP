@@ -1,0 +1,26 @@
+{
+ "checkpoint": "FF_b1-128k_s1234",
+ "basis_offdiag_max": 1.3043751152466946e-15,
+ "exact_a1_relerr": 4.653823310912773e-16,
+ "exact_nonfund_energy_frac": 7.574440568195683e-30,
+ "residual_vs_frozen_maxrel": 1.3486914942527747e-17,
+ "exact_residual_rel": 1.369573877194517e-15,
+ "fd_window_grad_relerr": 2.773348315285545e-10,
+ "window_grad_vs_direct_relerr": 1.1555311831476738e-15,
+ "jacobian_seconds": 43.766021146000185,
+ "jacobian_chunk_maxrel": 0.0,
+ "JTr_vs_grad_relerr": 7.351648368722393e-16,
+ "qr_svd_seconds": 36.057403655000144,
+ "qr_vs_svd_maxrel_resolvable": 1.1403073892108846e-14,
+ "eps_floor_over_sigma1": 5.617333549722722e-15,
+ "unit_seconds": 165.8047725309998,
+ "unit_timing": {
+  "A": 11.18530779699995,
+  "B": 29.027367169999934,
+  "CD": 13.43761210599996,
+  "E": 103.32047578400011,
+  "total": 165.80431048499986
+ },
+ "peak_rss_mb": 7064.5546875,
+ "checkpoint_sha256_unchanged": true
+}

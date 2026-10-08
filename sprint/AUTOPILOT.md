@@ -21,7 +21,7 @@ and do nothing in later sessions.
 ## Session protocol
 
 1. `git fetch origin`; check out branch b2-e05-window-law and pull. Also fetch every `claude/*` branch;
-   if one has commits touching sprint/STATUS.md that are newer than b2-e05-window-law, merge it first.
+   if one has commits not yet in b2-e05-window-law (work from other sessions), merge it first and note it in STATUS.md.
 2. Read sprint/STATUS.md. If `state: DONE`, exit immediately.
    If `lock_until` is in the future, another session is running: exit immediately.
    Otherwise set `lock_until` = now + 110 min, commit, push.

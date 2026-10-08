@@ -2,7 +2,7 @@
 
 state: RUNNING
 phase: A
-lock_until: none
+lock_until: 2026-10-09 02:45 IST
 deadline: 2026-10-12 23:59 IST
 candidates_tried: 0
 runs_used: 0

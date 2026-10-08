@@ -37,7 +37,7 @@ from beampinn.config import ExperimentConfig  # noqa: E402
 from beampinn.evaluation.metrics import EVAL_NT, EVAL_NX, grid, l2_pair, predict  # noqa: E402
 from beampinn.losses.residuals import d, pde_residual  # noqa: E402
 from beampinn.models.networks import build_model  # noqa: E402
-from beampinn.physics.beam import eigen_root, mode_shape_raw, modal_time  # noqa: E402
+from beampinn.physics.beam import eigen_root, modal_time  # noqa: E402
 from beampinn.training.trainer import build_hard, resolve_problem, setup_torch  # noqa: E402
 from physref.collocation_lab import state_checksum  # noqa: E402
 from physref.formulations.mixed import DisplacementView, MixedHardFF, TwoHeadFourierPINN  # noqa: E402
@@ -225,15 +225,27 @@ def basis(P, x):
     """phi_n(x), n = 1..N_MODES: exact-root fixed-fixed eigenfunctions, max|phi_n| = 1 (sign: +1 at argmax
     |U_n| on a 20001-point grid). phi_1 is identical to the benchmark's mode shape (asserted)."""
     bm = P["bm"]
+    assert bm.bc_type == "fixed-fixed"
     xs = np.linspace(0.0, bm.L, 20001)
     out = []
     for n in range(1, N_MODES + 1):
         beta = eigen_root(bm.bc_type, n) / bm.L
-        U = mode_shape_raw(bm.bc_type, beta, bm.L, xs)
-        out.append(mode_shape_raw(bm.bc_type, beta, bm.L, x) / U[np.argmax(np.abs(U))])
+        U = ff_mode_stable(beta, bm.L, xs)
+        out.append(ff_mode_stable(beta, bm.L, x) / U[np.argmax(np.abs(U))])
     Phi = np.array(out)
     assert np.allclose(Phi[0], P["ex"].mode_shape(x), rtol=0, atol=1e-12), "phi_1 != benchmark mode shape"
     return Phi
+
+
+def ff_mode_stable(beta, L, x):
+    """Fixed-fixed U(x) = cosh z - cos z - s (sinh z - sin z), z = beta x, evaluated WITHOUT the catastrophic
+    cancellation of cosh z - s sinh z (cosh(beta_8 L) ~ 2e11): cosh z - s sinh z = exp(-z) + (1 - s) sinh z with
+    1 - s = (cos bL - sin bL - exp(-bL)) / (sinh bL - sin bL). Mathematically identical to
+    beampinn.physics.beam.mode_shape_raw (k = 0); Amendment 1 of docs/hypotheses/B2-E04.md."""
+    x = np.asarray(x, dtype=np.float64)
+    bl, z = beta * L, beta * x
+    oms = (math.cos(bl) - math.sin(bl) - math.exp(-bl)) / (math.sinh(bl) - math.sin(bl))
+    return np.exp(-z) + oms * np.sinh(z) - np.cos(z) + (1.0 - oms) * np.sin(z)
 
 
 def gl(n, L):

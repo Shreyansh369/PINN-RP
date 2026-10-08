@@ -1,0 +1,5 @@
+experiment B2-E03-ADAM-FULL-s1234 | arm ADAM-FULL: Adam (=B1) to 320k, then 474 FULL-BATCH Adam steps (same optimizer state/schedule) on the LBFGS-F fixed set
+  base batch1_hard_tanh2 (run key Z4_20K__s1234__f78aa7f1da), 5,000 steps x mini-batch 128 = 640,000 PDE evaluations, float32, 1 thread(s)
+  approved for training: True
+init checksum: 9c5c91e3650e0638c44cda60e9415bdc573513d123ff5779fb75ea2711f4f5a1
+status: completed

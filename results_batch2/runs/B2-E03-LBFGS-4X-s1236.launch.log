@@ -1,0 +1,5 @@
+experiment B2-E03-LBFGS-4X-s1236 | arm LBFGS-4X: as LBFGS-F, but a fixed 2,560-point reservoir (4 epoch draws); 640-point subsets cycled every 50 closures
+  base batch1_hard_tanh2 (run key Z4_20K__s1236__7faa59acc0), 5,000 steps x mini-batch 128 = 640,000 PDE evaluations, float32, 1 thread(s)
+  approved for training: True
+init checksum: 8c963bb2c02ab51e08524757d726dd83ce247cbc1c791168a97f7cca22c32e2f
+status: completed

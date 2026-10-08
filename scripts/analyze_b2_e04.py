@@ -1286,6 +1286,41 @@ def figures(U, C):
     save(fig, "B2-E04_14_seed_variability.png")
 
 
+# ======================================================================================= descriptive
+def descriptive(U):
+    """Section 9.6 (descriptive, pre-registered): Spearman association between each primary scalar at level k and
+    the subsequent front advance t_c(k+1) - t_c(k), pooled over the 3 seeds per trajectory; and Spearman
+    association of log10 kappa_hat with L2, t_c, rho_1(POST) and min C over all FF/MO states of each trajectory."""
+    from scipy.stats import spearmanr
+    scal = {"h_r_PRE": PRIMARY["A"][0][0], "rho_nonfund_PRE": PRIMARY["A"][1][0], "minC": PRIMARY["B"][0][0],
+            "cos_behind_front": PRIMARY["B"][1][0], "C_st": PRIMARY["C"][0][0], "abs_log10_ratio": PRIMARY["C"][1][0],
+            "log10_kappa_hat": PRIMARY["D"][0][0], "rank_1e-06": PRIMARY["D"][1][0]}
+    out = {"lead_lag": {}, "kappa_assoc": {}}
+    for tr in ("FF-B1", "FF-LBFGS", "MO-ADAM", "MO-LBFGS"):
+        out["lead_lag"][tr] = {}
+        for nm, get in scal.items():
+            xs, ys = [], []
+            for s in SEEDS:
+                lst = trajectories(s)[tr]
+                for (l0, k0), (l1, k1) in zip(lst[1:-1], lst[2:]):       # from 128k on (init excluded)
+                    v = get(U[k0])
+                    if isinstance(v, float) and math.isnan(v):
+                        continue
+                    xs.append(v); ys.append(U[k1]["frozen"]["collapse_time_s"] - U[k0]["frozen"]["collapse_time_s"])
+            if len(xs) >= 5 and len(set(xs)) > 1:
+                r = spearmanr(xs, ys)
+                out["lead_lag"][tr][nm] = {"rho": float(r.statistic), "p": float(r.pvalue), "n": len(xs)}
+        recs = [U[k] for s in SEEDS for l, k in trajectories(s)[tr][1:]]
+        kap = [g(r, "E", "FULL", "log10_kappa_hat") for r in recs]
+        for nm, get in (("L2_exact", lambda r: r["frozen"]["L2_exact"]), ("t_c", lambda r: r["frozen"]["collapse_time_s"]),
+                        ("rho_1_POST", lambda r: g(r, "A", "POST", "rho_1")), ("minC", lambda r: g(r, "C", "minC"))):
+            pr = [(a, get(r)) for a, r in zip(kap, recs) if not math.isnan(get(r))]
+            if len(pr) >= 5:
+                r = spearmanr(*zip(*pr))
+                out["kappa_assoc"].setdefault(tr, {})[nm] = {"rho": float(r.statistic), "p": float(r.pvalue), "n": len(pr)}
+    return out
+
+
 # ============================================================================================== main
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "help"
@@ -1339,6 +1374,12 @@ def main():
         json.dump(C, open(p, "w"), indent=1, default=str)
         figures(U, C)
         print(json.dumps({k: C[k] for k in ("CASE", "supported", "mechanisms")}, indent=1, default=str))
+    elif cmd == "descriptive":
+        p = OUT / "B2-E04_DESCRIPTIVE.json"
+        assert not p.exists()
+        D = descriptive(load_units())
+        json.dump(D, open(p, "w"), indent=1)
+        print(json.dumps(D, indent=1))
     else:
         print(__doc__)
 

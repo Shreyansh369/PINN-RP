@@ -1,0 +1,4 @@
+experiment B2-E05-W1000-s1234 | arm W1000: T_w = 1.0 s (1 window, 5000 steps): B1 verbatim (harness check)
+  base batch1_hard_tanh2 (run key Z4_20K__s1234__f78aa7f1da), 5,000 steps x mini-batch 128 = 640,000 PDE evaluations, float32, 1 thread(s)
+  approved for training: True
+status: completed

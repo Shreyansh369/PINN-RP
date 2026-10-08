@@ -1,0 +1,45 @@
+{
+  "pre_registration": "docs/hypotheses/B2-E05.md",
+  "constants": {
+    "w": 129.3246,
+    "zeta": 3.54,
+    "d_max": 200.0
+  },
+  "runs_found": [
+    "W1000-s1234"
+  ],
+  "harness_check_s1234": {
+    "W1000_L2_exact": 0.5263868153173643,
+    "logged_B1_L2_exact": 0.52639,
+    "match_4_significant_digits": true,
+    "loss_at_steps": {
+      "1000": {
+        "logged_B2-E01": 578.1395263671875,
+        "W1000": 578.1395263671875,
+        "rel_diff": 0.0
+      },
+      "2000": {
+        "logged_B2-E01": 580.7040405273438,
+        "W1000": 580.7040405273438,
+        "rel_diff": 0.0
+      },
+      "3000": {
+        "logged_B2-E01": 373.93402099609375,
+        "W1000": 373.93402099609375,
+        "rel_diff": 0.0
+      },
+      "4000": {
+        "logged_B2-E01": 417.3562316894531,
+        "W1000": 417.3562316894531,
+        "rel_diff": 0.0
+      },
+      "5000": {
+        "logged_B2-E01": 535.4627685546875,
+        "W1000": 535.4627685546875,
+        "rel_diff": 0.0
+      }
+    },
+    "loss_identical_all_logged_steps": true
+  },
+  "gate_seed1234": "pending: W250, W100, W050"
+}

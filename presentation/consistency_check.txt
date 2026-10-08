@@ -1,0 +1,76 @@
+[PASS] slide count -- 14 slides
+[PASS] every registered displayed number is present in the deck -- 95 checked; missing: []
+[PASS] B2-E01 B1 persistence 3.15
+[PASS] B2-E01 modal persistence 7.62
+[PASS] B2-E01 mixed persistence 1.67
+[PASS] B2-E01 L2 0.526/0.675/0.270
+[PASS] B2-E01 decay 8.98/13.24/5.40
+[PASS] B2-E01 residual 0.110/2.57/0.074
+[PASS] B2-E01 time 822/1404/374/190
+[PASS] B2-E01 RAM 934/1178/730/704
+[PASS] B2-E01 freq err -0.96/-2.0/-0.04 %
+[PASS] B2-E01 table value '3.15' shown
+[PASS] B2-E01 table value '0.526' shown
+[PASS] B2-E01 table value '−0.96 %' shown
+[PASS] B2-E01 table value '−2.0 %' shown
+[PASS] B2-E01 table value '−0.04 %' shown
+[PASS] B2-E01 table value '8.98' shown
+[PASS] B2-E01 table value '13.24' shown
+[PASS] B2-E01 table value '5.40' shown
+[PASS] B2-E01 table value '0.110' shown
+[PASS] B2-E01 table value '2.57' shown
+[PASS] B2-E01 table value '0.074' shown
+[PASS] B2-E01 table value '1,404' shown
+[PASS] B2-E01 table value '1,178' shown
+[PASS] modal/B1 persistence ratios ×2.42, ×2.13, ×1.19
+[PASS] modal collapse 0.296–0.370 s
+[PASS] B1 seed range 3.11–5.10
+[PASS] modal L-BFGS full window 20.58 in 3/3
+[PASS] modal L-BFGS L2 0.038–0.093
+[PASS] M0 L2 0.27–0.33
+[PASS] M0 persistence 6.1–7.6
+[PASS] L-BFGS decay 3.62–4.10
+[PASS] modal L-BFGS relative wall-clock 0.91–0.93
+[PASS] causal persistence 2.1–4.6, L2 0.56–1.56
+[PASS] transfer seed 1234 ('−1.6', '×1.28', '×1.55') -- ('−1.6', '×1.28', '×1.55')
+[PASS] transfer seed 1235 ('−2.4', '×1.54', '×2.38') -- ('−2.4', '×1.54', '×2.38')
+[PASS] transfer seed 1236 ('−2.6', '×1.44', '×1.22') -- ('−2.6', '×1.44', '×1.22')
+[PASS] B2-E03 G LBFGS-F = 35–76× -- 35–76
+[PASS] B2-E03 G ADAM-FULL = 4–6× -- 4–6
+[PASS] B2-E03 G LBFGS-R = 1.8–2.8× -- 1.8–2.8
+[PASS] B2-E03 G LBFGS-4X = 1.2–1.4× -- 1.2–1.4
+[PASS] B2-E03 G B1 = 1.1× -- 1.1
+[PASS] B2-E03 CASE D
+[PASS] C0 L2 3.26
+[PASS] Batch-1 best 0.263 / 8.09 / 0.393 s
+[PASS] paper L2 4.64e-4 from registry
+[PASS] paper citation present
+[PASS] Batch-2 runs = 42
+[PASS] Batch-2 arm labels = 14, distinct = 11 (3 bit-exact control re-runs)
+[PASS] Batch-1 runs = 26, distinct = 25
+[PASS] total runs 68 and distinct configurations 35 shown
+[PASS] Batch-2 seeds = {1234,1235,1236}
+[PASS] 16 families in 4 classes shown
+[PASS] no B2-E04 run in the registry at cdd87b5
+[PASS] no B2-E04 content in the deck
+[PASS] future experiments not described as completed
+[PASS] slide 5: modal content marked diagnostic
+[PASS] slide 7: modal content marked diagnostic
+[PASS] slide 8: modal content marked diagnostic
+[PASS] slide 9: modal content marked diagnostic
+[PASS] slide 12: modal content marked diagnostic
+[PASS] slide 12: 'optimized PINN' only in negated/future form
+[PASS] slide 12: railway framed as future
+[PASS] slide 13: 'optimized PINN' only in negated/future form
+[PASS] slide 13: railway framed as future
+[PASS] slide 14: modal content marked diagnostic
+[PASS] slide 14: 'optimized PINN' only in negated/future form
+[PASS] FAILED tags qualified 'ON THIS BENCHMARK'
+[PASS] full-field reference is B1 (0.526 / 3.15 cycles)
+[PASS] no completion percentage
+[PASS] forbidden words absent -- []
+[PASS] 'breakthrough' only in the mandated takeaway
+[PASS] 'solved' not used
+[PASS] ROOT commit cited
+
+ALL CHECKS PASSED

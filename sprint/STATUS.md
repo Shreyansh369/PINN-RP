@@ -53,6 +53,11 @@ Session 1 (2026-10-09 00:54-, autopilot, cloud, nproc = 2 -> 1 run at a time, 1 
   Next work on resume: re-run W050-s1234 from scratch (fresh run, the interrupted one is not resumed), then
   W100, W250, Block 3 analysis and the gate. Remaining budget unchanged (runs_used 0 of the D-phase 60).
 
+## Session 3 (2026-10-09 05:54 IST, scheduled, cloud) — DID NOT TRAIN
+- Fetched; no claude/* branch has commits missing from b2-e05-window-law. No PI note since the 01:44 IST stop.
+- DECISION: remain PAUSED, no lock taken, no training. Reason: same as Session 2 (standing scheduled prompt does not
+  override the later explicit user stop). No repeat notification sent (Session 2 already notified the PI).
+
 ## Next step
 Phase B: seed 1234 runs in order W1000, W050, W100, W250 (AUTOPILOT order), one at a time; then Block 3
 (scripts/analyze_b2_e05.py implementing pre-registration sections 6-8) and the gate.

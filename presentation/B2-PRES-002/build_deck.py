@@ -20,11 +20,12 @@ FIG = HERE / "figures"; FIG.mkdir(exist_ok=True)
 plt.rcParams.update({"font.size": 11, "axes.spines.top": False, "axes.spines.right": False})
 # (a) fitted decay per arm, seed 1234 (B2-E01S_SEED_RESULTS / B2-E02_RESULTS / B2-E03_RESULTS)
 arms = [("B1", 8.98), ("B1-FP64", 8.98), ("mixed", 13.24), ("modal (diag.)", 5.40),
-        ("full-field\nAdam→L-BFGS", 15.64), ("full-field\nfull-batch Adam", 12.69), ("modal\nAdam→L-BFGS", 3.70)]
+        ("full-field\nAdam→\nL-BFGS", 15.64), ("full-field\nfull-batch\nAdam", 12.69), ("modal\nAdam→\nL-BFGS", 3.70)]
 fig, ax = plt.subplots(figsize=(8, 3.6))
 cols = ["#869FB2"] * 6 + ["#0097A7"]
 ax.bar([a for a, _ in arms], [v for _, v in arms], color=cols)
-ax.axhline(3.54, color="#0E2A47", ls="--", lw=1.5); ax.text(6.45, 3.9, "exact 3.54", ha="right", color="#0E2A47")
+ax.axhline(3.54, color="#0E2A47", ls="--", lw=1.5); ax.set_xlim(-0.6, 7.6)
+ax.text(6.45, 3.54 + 0.25, "exact 3.54", ha="left", va="bottom", color="#0E2A47", fontsize=10)
 for i, (_, v) in enumerate(arms): ax.text(i, v + 0.3, f"{v:.2f}", ha="center", fontsize=10)
 ax.set_ylabel("fitted decay [1/s]"); ax.set_title("Seed 1234, 640k PDE evaluations", fontsize=11, loc="left")
 plt.xticks(fontsize=9); fig.tight_layout(); fig.savefig(FIG / "a_decay_per_arm.png", dpi=200); plt.close(fig)

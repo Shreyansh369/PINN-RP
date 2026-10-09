@@ -73,6 +73,11 @@ The session-1 workspace kept W050-s1234 running after the stop; it completed 11/
 RUN_LOG note) before its process died (workspace restart). Its partial history.csv/windows.csv (11 windows) are
 now committed. Still INTERRUPTED, no metrics.json, not a result. The RUN_LOG row is left as written (no rewrite).
 
+## Session 6 (2026-10-09 11:55 IST, scheduled, cloud) — DID NOT TRAIN
+- Fetched; no claude/* branch has commits missing from b2-e05-window-law. Newest branch commit is the 11:30 IST
+  correction note, which itself says "still PAUSED"; it is not a resume instruction. DECISION: remain PAUSED, no lock
+  taken, no training (same reason as Sessions 2-5). No repeat notification.
+
 ## Next step
 Phase B: seed 1234 runs in order W1000, W050, W100, W250 (AUTOPILOT order), one at a time; then Block 3
 (scripts/analyze_b2_e05.py implementing pre-registration sections 6-8) and the gate.

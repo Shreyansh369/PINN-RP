@@ -213,6 +213,13 @@ now committed. Still INTERRUPTED, no metrics.json, not a result. The RUN_LOG row
   No PI resume note. DECISION: remain PAUSED, no lock taken, no training (same reason as Sessions 2-31: the standing
   scheduled prompt does not override the later explicit user stop at 01:44 IST). No repeat notification.
 
+## Session 33 (2026-10-11 17:54 IST, scheduled, cloud) — DID NOT TRAIN
+- Fetched; no claude/* branch has commits missing from b2-e05-window-law; no new commits on the branch since Session 32.
+  No PI resume note. DECISION: remain PAUSED, no lock taken, no training (same reason as Sessions 2-32: the standing
+  scheduled prompt does not override the later explicit user stop at 01:44 IST).
+- One final reminder notification sent: deadline (2026-10-12 23:59 IST) is ~30 h away; Phase B alone needs ~3 runs
+  run one at a time on 2 cores, so a resume note is needed soon for any result before the deadline. No further repeats.
+
 ## Next step
 Phase B: seed 1234 runs in order W1000, W050, W100, W250 (AUTOPILOT order), one at a time; then Block 3
 (scripts/analyze_b2_e05.py implementing pre-registration sections 6-8) and the gate.
